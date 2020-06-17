@@ -51,13 +51,10 @@ namespace Gestion_De_Cafeteria
 
         }
         private void CmdGuardar_Click(object sender, EventArgs e)
-        {
-
-            Cafeteria cafeteria2 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
-            //var idCaf = entities.Cafeteria.Where(x => x.ID = txtID.Text)
-                        
-            if (cafeteria2 != null)
+        {           
+            if (txtID.Text != "")
             {
+                Cafeteria cafeteria2 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
                 cafeteria2.Descripcion = txtDescripcion.Text;
                 cafeteria2.ID_Campus = Convert.ToInt32(CmbCampus.SelectedValue);
                 cafeteria2.Encargado = Convert.ToInt32(CmbEncargado.SelectedValue);
