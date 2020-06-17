@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
 
 namespace Gestion_De_Cafeteria
 {
@@ -24,10 +25,10 @@ namespace Gestion_De_Cafeteria
             CbxEstado.SelectedIndex = 0;
             if (proveedor != null)
             {
-                TxtIdProveedor.Text = proveedor.IdEmpleado.ToString();
+                TxtIdProveedor.Text = proveedor.IdProveedor.ToString();
                 TxtNombreComercial.Text = proveedor.NombreComercial;
                 TxtRNC.Text = proveedor.RNC.ToString();
-                TxtFechaRegistro.Text = proveedor.FechaRegistro.ToString();
+                DtpFechaRegistro.Value = proveedor.FechaRegistro;
                 if (proveedor.Estado == "Inactivo")
                 {
                     CbxEstado.SelectedIndex = 1;
@@ -37,28 +38,37 @@ namespace Gestion_De_Cafeteria
 
         private void CmdGuadar_Click(object sender, EventArgs e)
         {
-            Proveedores proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
-
-            if (proveedor != null)
+            try
             {
-                proveedor.NombreComercial = TxtNombreComercial.Text;
-                proveedor.RNC = TxtRNC.Text;
-                proveedor.FechaRegistro = TxtFechaRegistro.Text;
-                proveedor.Estado = CbxEstado.Text;
-            }
-            else
-            {
-                entities.Proveedores.Add(new Proveedores
+                if (TxtIdProveedor.Text != "")
                 {
-                    NombreComercial = TxtNombreComercial.Text,
-                    RNC = TxtRNC.Text,
-                    FechaRegistro = TxtFechaRegistro.Text,
-                    Estado = CbxEstado.Text
-                });
+                    Proveedores proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+                    proveedor.NombreComercial = TxtNombreComercial.Text;
+                    proveedor.RNC = TxtRNC.Text;
+                    proveedor.FechaRegistro = DtpFechaRegistro.Value;
+                    proveedor.Estado = CbxEstado.Text;
+                    entities.Entry<Proveedores>(proveedor).State = EntityState.Modified;
+                    entities.SaveChanges();
+                    entities.Entry<Proveedores>(proveedor).Reload();
+                }
+                else
+                {
+                    entities.Proveedores.Add(new Proveedores
+                    {
+                        NombreComercial = TxtNombreComercial.Text,
+                        RNC = TxtRNC.Text,
+                        FechaRegistro = DtpFechaRegistro.Value,
+                        Estado = CbxEstado.Text
+                    });
+                    entities.SaveChanges();
+                }
+                MessageBox.Show("Datos guardados con exito");
+                this.Close();
             }
-            entities.SaveChanges();
-            MessageBox.Show("Datos guardados con exito");
-            this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Un campo de los ingresados es invalido " + ex.Message);
+            }
         }
 
         private void CmdEliminar_Click(object sender, EventArgs e)

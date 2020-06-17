@@ -47,7 +47,7 @@ namespace Gestion_De_Cafeteria
             proveedor.IdProveedor = Int32.Parse(row.Cells[0].Value.ToString());
             proveedor.NombreComercial = row.Cells[1].Value.ToString();
             proveedor.RNC = row.Cells[2].Value.ToString();
-            proveedor.FechaRegistro = row.Cells[3].Value.ToString();
+            proveedor.FechaRegistro = DateTime.Parse(row.Cells[3].Value.ToString());
             proveedor.Estado = row.Cells[4].Value.ToString();
             FrmProveedoresEd fpe = new FrmProveedoresEd();
             fpe.proveedor = proveedor;

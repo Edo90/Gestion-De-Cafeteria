@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtIdProveedor = new System.Windows.Forms.TextBox();
-            this.TxtNombreComercial = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.CbxEstado = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.TxtRNC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TxtFechaRegistro = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.TxtNombreComercial = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TxtIdProveedor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.CmdGuadar = new System.Windows.Forms.Button();
             this.CmdEliminar = new System.Windows.Forms.Button();
-            this.CbxEstado = new System.Windows.Forms.ComboBox();
+            this.DtpFechaRegistro = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.DtpFechaRegistro);
             this.panel1.Controls.Add(this.CbxEstado);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.TxtFechaRegistro);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.TxtRNC);
             this.panel1.Controls.Add(this.label3);
@@ -61,38 +61,35 @@
             this.panel1.Size = new System.Drawing.Size(367, 256);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // CbxEstado
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Identificador";
+            this.CbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxEstado.FormattingEnabled = true;
+            this.CbxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.CbxEstado.Location = new System.Drawing.Point(106, 195);
+            this.CbxEstado.Name = "CbxEstado";
+            this.CbxEstado.Size = new System.Drawing.Size(128, 21);
+            this.CbxEstado.TabIndex = 10;
             // 
-            // TxtIdProveedor
+            // label5
             // 
-            this.TxtIdProveedor.Enabled = false;
-            this.TxtIdProveedor.Location = new System.Drawing.Point(106, 16);
-            this.TxtIdProveedor.Name = "TxtIdProveedor";
-            this.TxtIdProveedor.Size = new System.Drawing.Size(114, 20);
-            this.TxtIdProveedor.TabIndex = 1;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 198);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Estado";
             // 
-            // TxtNombreComercial
+            // label4
             // 
-            this.TxtNombreComercial.Location = new System.Drawing.Point(106, 58);
-            this.TxtNombreComercial.Name = "TxtNombreComercial";
-            this.TxtNombreComercial.Size = new System.Drawing.Size(254, 20);
-            this.TxtNombreComercial.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre Comercial";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 153);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Fecha Registro";
             // 
             // TxtRNC
             // 
@@ -110,30 +107,38 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "RNC";
             // 
-            // TxtFechaRegistro
+            // TxtNombreComercial
             // 
-            this.TxtFechaRegistro.Location = new System.Drawing.Point(106, 150);
-            this.TxtFechaRegistro.Name = "TxtFechaRegistro";
-            this.TxtFechaRegistro.Size = new System.Drawing.Size(128, 20);
-            this.TxtFechaRegistro.TabIndex = 7;
+            this.TxtNombreComercial.Location = new System.Drawing.Point(106, 58);
+            this.TxtNombreComercial.Name = "TxtNombreComercial";
+            this.TxtNombreComercial.Size = new System.Drawing.Size(254, 20);
+            this.TxtNombreComercial.TabIndex = 3;
             // 
-            // label4
+            // label2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Fecha Registro";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nombre Comercial";
             // 
-            // label5
+            // TxtIdProveedor
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 198);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Estado";
+            this.TxtIdProveedor.Enabled = false;
+            this.TxtIdProveedor.Location = new System.Drawing.Point(106, 16);
+            this.TxtIdProveedor.Name = "TxtIdProveedor";
+            this.TxtIdProveedor.Size = new System.Drawing.Size(114, 20);
+            this.TxtIdProveedor.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Identificador";
             // 
             // CmdGuadar
             // 
@@ -155,23 +160,19 @@
             this.CmdEliminar.UseVisualStyleBackColor = true;
             this.CmdEliminar.Click += new System.EventHandler(this.CmdEliminar_Click);
             // 
-            // CbxEstado
+            // DtpFechaRegistro
             // 
-            this.CbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxEstado.FormattingEnabled = true;
-            this.CbxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.CbxEstado.Location = new System.Drawing.Point(106, 195);
-            this.CbxEstado.Name = "CbxEstado";
-            this.CbxEstado.Size = new System.Drawing.Size(128, 21);
-            this.CbxEstado.TabIndex = 10;
+            this.DtpFechaRegistro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpFechaRegistro.Location = new System.Drawing.Point(106, 147);
+            this.DtpFechaRegistro.Name = "DtpFechaRegistro";
+            this.DtpFechaRegistro.Size = new System.Drawing.Size(128, 20);
+            this.DtpFechaRegistro.TabIndex = 11;
             // 
             // FrmProveedoresEd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 363);
+            this.ClientSize = new System.Drawing.Size(393, 363);
             this.Controls.Add(this.CmdEliminar);
             this.Controls.Add(this.CmdGuadar);
             this.Controls.Add(this.panel1);
@@ -188,7 +189,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TxtFechaRegistro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtRNC;
         private System.Windows.Forms.Label label3;
@@ -199,5 +199,6 @@
         private System.Windows.Forms.Button CmdGuadar;
         private System.Windows.Forms.Button CmdEliminar;
         private System.Windows.Forms.ComboBox CbxEstado;
+        private System.Windows.Forms.DateTimePicker DtpFechaRegistro;
     }
 }
