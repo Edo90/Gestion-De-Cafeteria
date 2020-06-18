@@ -81,6 +81,11 @@ namespace Gestion_De_Cafeteria
 
         private void CmdEliminar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Seguro de eliminar?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
             Cafeteria cafeteria3 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
             if (cafeteria3 != null)
             {

@@ -97,6 +97,18 @@
     <Compile Include="FrmEdCampus.Designer.cs">
       <DependentUpon>FrmEdCampus.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEdTipoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdTipoUsuario.Designer.cs">
+      <DependentUpon>FrmEdTipoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoUsuario.Designer.cs">
+      <DependentUpon>FrmTipoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,6 +140,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEdCampus.resx">
       <DependentUpon>FrmEdCampus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdTipoUsuario.resx">
+      <DependentUpon>FrmEdTipoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoUsuario.resx">
+      <DependentUpon>FrmTipoUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

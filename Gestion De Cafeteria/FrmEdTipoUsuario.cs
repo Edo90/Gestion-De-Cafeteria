@@ -10,42 +10,40 @@ using System.Windows.Forms;
 
 namespace Gestion_De_Cafeteria
 {
-    public partial class FrmEdCampus : Form
+    public partial class FrmEdTipoUsuario : Form
     {
-        public Campus campus { get; set; }
+        public Tipo_Usuario tipoUsuario { get; set; }
         private GCEntities entities = new GCEntities();
-
-        public FrmEdCampus()
+        public FrmEdTipoUsuario()
         {
             InitializeComponent();
         }
 
-        private void FrmEdCampus_Load(object sender, EventArgs e)
+        private void FrmEdTipoUsuario_Load(object sender, EventArgs e)
         {
-           CmbEstado.SelectedIndex = 0;
+            CmbEstado.SelectedIndex = 0;
 
-            if (campus != null)
+            if (tipoUsuario != null)
             {
-                txtID.Text = campus.ID.ToString();
-                txtDescripcion.Text = campus.Descripcion;
-                CmbEstado.SelectedIndex = Int32.Parse(campus.Estado);
+                txtID.Text = tipoUsuario.ID.ToString();
+                txtDescripcion.Text = tipoUsuario.Descripcion;
+                CmbEstado.SelectedIndex = Int32.Parse(tipoUsuario.Estado);
             }
-            
         }
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
             if (txtID.Text != "")
             {
-                Campus campus2 = entities.Campus.Find(Int32.Parse(txtID.Text));
-                campus2.Descripcion = txtDescripcion.Text;
-                campus2.Estado = Convert.ToString(CmbEstado.SelectedIndex);
+                Tipo_Usuario tipoUsu = entities.Tipo_Usuario.Find(Int32.Parse(txtID.Text));
+                tipoUsu.Descripcion = txtDescripcion.Text;
+                tipoUsu.Estado = Convert.ToString(CmbEstado.SelectedIndex);
             }
             else
             {
-                entities.Campus.Add(new Campus
+                entities.Tipo_Usuario.Add(new Tipo_Usuario
                 {
-                    Descripcion = txtDescripcion.Text,                    
+                    Descripcion = txtDescripcion.Text,
                     Estado = CmbEstado.SelectedIndex.ToString()
                 });
             }
@@ -62,10 +60,10 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Campus campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
-            if (campus3 != null)
+            Tipo_Usuario tipoUsuar = entities.Tipo_Usuario.Find(Int32.Parse(txtID.Text));
+            if (tipoUsuar != null)
             {
-                entities.Campus.Remove(campus3);
+                entities.Tipo_Usuario.Remove(tipoUsuar);
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }
