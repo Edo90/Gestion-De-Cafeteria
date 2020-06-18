@@ -16,7 +16,7 @@ namespace Gestion_De_Cafeteria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCafeteria());
+            Application.Run(new FrmCampus());
         }
     }
 }

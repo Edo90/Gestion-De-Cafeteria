@@ -20,7 +20,8 @@ namespace Gestion_De_Cafeteria
         }
 
         private void FrmEdCafeteria_Load(object sender, EventArgs e)
-        {            
+        {
+            CmbEstado.SelectedIndex = 0;
 
             if (cafeteria != null)
             {
@@ -28,8 +29,9 @@ namespace Gestion_De_Cafeteria
                 txtDescripcion.Text = cafeteria.Descripcion;
                 CmbCampus.SelectedValue = cafeteria.ID_Campus;
                 CmbEncargado.SelectedValue = cafeteria.Encargado;
-                CmbEstado.SelectedValue = Int32.Parse(cafeteria.Estado);
-            }            
+                CmbEstado.SelectedIndex = Int32.Parse(cafeteria.Estado);
+            }
+            
         }
         public void llenarCombox()
         {
@@ -84,10 +86,10 @@ namespace Gestion_De_Cafeteria
             {
                 entities.Cafeteria.Remove(cafeteria3);
                 entities.SaveChanges();
-                MessageBox.Show("Empleado eliminado con exito");
+                MessageBox.Show("Eliminado con exito");
             }
             else { 
-                MessageBox.Show("Empleado no existe");
+                MessageBox.Show("La cafeteria no existe");
         }
             this.Close();
         }
