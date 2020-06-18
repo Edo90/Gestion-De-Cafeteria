@@ -79,11 +79,23 @@
     <Compile Include="FrmCafeteria.Designer.cs">
       <DependentUpon>FrmCafeteria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCampus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCampus.Designer.cs">
+      <DependentUpon>FrmCampus.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEdCafeteria.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEdCafeteria.Designer.cs">
       <DependentUpon>FrmEdCafeteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdCampus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdCampus.Designer.cs">
+      <DependentUpon>FrmEdCampus.cs</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -108,8 +120,14 @@
     <EmbeddedResource Include="FrmCafeteria.resx">
       <DependentUpon>FrmCafeteria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCampus.resx">
+      <DependentUpon>FrmCampus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEdCafeteria.resx">
       <DependentUpon>FrmEdCafeteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdCampus.resx">
+      <DependentUpon>FrmEdCampus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
