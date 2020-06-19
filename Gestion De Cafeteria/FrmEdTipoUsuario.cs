@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmEdTipoUsuario : Form
     {
         public Tipo_Usuario tipoUsuario { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmEdTipoUsuario()
         {
             InitializeComponent();

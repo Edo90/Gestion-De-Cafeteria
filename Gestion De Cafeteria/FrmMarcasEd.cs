@@ -13,8 +13,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmMarcasEd : Form
     {
-        public Marcas marca { get; set; }
-        private Entities entities = new Entities();
+        public Marca marca { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmMarcasEd()
         {
             InitializeComponent();
@@ -40,16 +40,16 @@ namespace Gestion_De_Cafeteria
             {
                 if (TxtIdMarca.Text != "")
                 {
-                    Marcas marca = entities.Marcas.Find(Int32.Parse(TxtIdMarca.Text));
+                    Marca marca = entities.Marcas.Find(Int32.Parse(TxtIdMarca.Text));
                     marca.Descripcion = TxtDescripcion.Text;
                     marca.Estado = CbxEstado.Text;
-                    entities.Entry<Marcas>(marca).State = EntityState.Modified;
+                    entities.Entry<Marca>(marca).State = EntityState.Modified;
                     entities.SaveChanges();
-                    entities.Entry<Marcas>(marca).Reload();
+                    entities.Entry<Marca>(marca).Reload();
                 }
                 else
                 {
-                    entities.Marcas.Add(new Marcas
+                    entities.Marcas.Add(new Marca
                     {
                         Descripcion = TxtDescripcion.Text,
                         Estado = CbxEstado.Text
@@ -72,7 +72,7 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Marcas marca = entities.Marcas.Find(Int32.Parse(TxtIdMarca.Text));
+            Marca marca = entities.Marcas.Find(Int32.Parse(TxtIdMarca.Text));
             if (marca != null)
             {
                 entities.Marcas.Remove(marca);

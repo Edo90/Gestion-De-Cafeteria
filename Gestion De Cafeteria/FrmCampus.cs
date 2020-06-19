@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmCampus : Form
     {
         public Campus campus { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmCampus()
         {

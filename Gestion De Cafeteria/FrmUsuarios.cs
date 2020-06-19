@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmUsuarios : Form
     {
-        public Usuarios usuario { get; set; }
-        private Entities entities = new Entities();
+        public Usuario usuario { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmUsuarios()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Gestion_De_Cafeteria
         private void DgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvUsuarios.SelectedRows[0];
-            Usuarios usuario = new Usuarios();
+            Usuario usuario = new Usuario();
             usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
             usuario.Nombre = row.Cells[1].Value.ToString();
             usuario.Cedula = Int32.Parse(row.Cells[2].Value.ToString());

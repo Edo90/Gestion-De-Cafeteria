@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmEdCampus : Form
     {
         public Campus campus { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmEdCampus()
         {
@@ -37,13 +37,13 @@ namespace Gestion_De_Cafeteria
         {
             if (txtID.Text != "")
             {
-                Campus campus2 = entities.Campus.Find(Int32.Parse(txtID.Text));
+                Campu campus2 = entities.Campus.Find(Int32.Parse(txtID.Text));
                 campus2.Descripcion = txtDescripcion.Text;
                 campus2.Estado = Convert.ToString(CmbEstado.SelectedIndex);
             }
             else
             {
-                entities.Campus.Add(new Campus
+                entities.Campus.Add(new Campu
                 {
                     Descripcion = txtDescripcion.Text,                    
                     Estado = CmbEstado.SelectedIndex.ToString()
@@ -62,7 +62,7 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Campus campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
+            Campu campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
             if (campus3 != null)
             {
                 entities.Campus.Remove(campus3);

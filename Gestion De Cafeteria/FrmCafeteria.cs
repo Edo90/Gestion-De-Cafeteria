@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmCafeteria : Form
     {
         public Cafeteria cafeteria { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmCafeteria()
         {
@@ -28,9 +28,9 @@ namespace Gestion_De_Cafeteria
         private void ConsultarCafeteria()
         {
            
-                var listadoCafeterias = (from caf in entities.Cafeteria
+                var listadoCafeterias = (from caf in entities.Cafeterias
                                         join cam in entities.Campus on caf.ID_Campus equals cam.ID
-                                        join emp in entities.Empleado on caf.Encargado equals emp.IdEMpleado
+                                        join emp in entities.Empleadoes on caf.Encargado equals emp.IdEMpleado
                                         select new 
                                         {
                                             ID = caf.ID,
@@ -53,9 +53,9 @@ namespace Gestion_De_Cafeteria
 
         private void consultarPorCriterio()
         {
-            var cafet = from em in entities.Cafeteria
+            var cafet = from em in entities.Cafeterias
                         join cam in entities.Campus on em.ID_Campus equals cam.ID
-                        join emp in entities.Empleado on em.Encargado equals emp.IdEMpleado
+                        join emp in entities.Empleadoes on em.Encargado equals emp.IdEMpleado
                         where (em.ID.ToString().StartsWith(txtBuscarPor.Text) ||
                         em.Descripcion.StartsWith(txtBuscarPor.Text) ||
                         em.Estado.StartsWith(txtBuscarPor.Text) ||
