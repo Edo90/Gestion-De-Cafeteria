@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmCafeteria : Form
     {
         public Cafeteria cafeteria { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmCafeteria()
         {
@@ -28,18 +28,18 @@ namespace Gestion_De_Cafeteria
         private void ConsultarCafeteria()
         {
            
-                var listadoCafeterias = (from caf in entities.Cafeteria
+                var listadoCafeterias = (from caf in entities.Cafeterias
                                         join cam in entities.Campus on caf.ID_Campus equals cam.ID
-                                        join emp in entities.Empleado on caf.Encargado equals emp.IdEMpleado
+                                        join emp in entities.Empleadoes on caf.Encargado equals emp.IdEMpleado
                                         select new 
                                         {
-                                            ID = caf.ID,
-                                            Descripcion = caf.Descripcion,
+                                            caf.ID,
+                                            caf.Descripcion,
                                             idCampus = caf.ID_Campus,
                                             nombreCampus = cam.Descripcion,
                                             idEncargado = caf.Encargado,
                                             nombreEncargado = emp.Nombre,
-                                            Estado = caf.Estado
+                                            caf.Estado
                                         }).ToList();
 
             DgvCafeteria.DataSource = listadoCafeterias.ToList();              
@@ -53,9 +53,9 @@ namespace Gestion_De_Cafeteria
 
         private void consultarPorCriterio()
         {
-            var cafet = from em in entities.Cafeteria
+            var cafet = from em in entities.Cafeterias
                         join cam in entities.Campus on em.ID_Campus equals cam.ID
-                        join emp in entities.Empleado on em.Encargado equals emp.IdEMpleado
+                        join emp in entities.Empleadoes on em.Encargado equals emp.IdEMpleado
                         where (em.ID.ToString().StartsWith(txtBuscarPor.Text) ||
                         em.Descripcion.StartsWith(txtBuscarPor.Text) ||
                         em.Estado.StartsWith(txtBuscarPor.Text) ||
@@ -88,15 +88,19 @@ namespace Gestion_De_Cafeteria
 
         private void DgvCafeteria_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.DgvCafeteria.SelectedRows[0];
-            Cafeteria cafeteria = new Cafeteria();
-            cafeteria.ID = Int32.Parse(row.Cells[0].Value.ToString());
-            cafeteria.Descripcion = row.Cells[1].Value.ToString();
-            cafeteria.ID_Campus = Int32.Parse(row.Cells[2].Value.ToString());
-            cafeteria.Encargado = Int32.Parse(row.Cells[4].Value.ToString());
-            cafeteria.Estado = row.Cells[6].Value.ToString();
-            FrmEdCafeteria fed = new FrmEdCafeteria();
-            fed.cafeteria = cafeteria;
+            DataGridViewRow row = DgvCafeteria.SelectedRows[0];
+            Cafeteria cafeteria = new Cafeteria
+            {
+                ID = int.Parse(row.Cells[0].Value.ToString()),
+                Descripcion = row.Cells[1].Value.ToString(),
+                ID_Campus = int.Parse(row.Cells[2].Value.ToString()),
+                Encargado = int.Parse(row.Cells[4].Value.ToString()),
+                Estado = row.Cells[6].Value.ToString()
+            };
+            FrmEdCafeteria fed = new FrmEdCafeteria
+            {
+                cafeteria = cafeteria
+            };
             fed.llenarCombox();
 
             fed.ShowDialog();

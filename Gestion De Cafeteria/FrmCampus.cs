@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmCampus : Form
     {
-        public Campus campus { get; set; }
-        private GCEntities entities = new GCEntities();
+        public Campu campus { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmCampus()
         {
@@ -71,7 +71,7 @@ namespace Gestion_De_Cafeteria
         private void DgvCampus_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvCampus.SelectedRows[0];
-            Campus campus = new Campus();
+            Campu campus = new Campu();
             campus.ID = Int32.Parse(row.Cells[0].Value.ToString());
             campus.Descripcion = row.Cells[1].Value.ToString();
             campus.Estado = row.Cells[2].Value.ToString();

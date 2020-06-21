@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmMarcas : Form
     {
-        public Marcas marca { get; set; }
-        private Entities entities = new Entities();
+        public Marca marca { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmMarcas()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Gestion_De_Cafeteria
         private void DgvMarcas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvMarcas.SelectedRows[0];
-            Marcas marca = new Marcas();
+            Marca marca = new Marca();
             marca.IdMarca = Int32.Parse(row.Cells[0].Value.ToString());
             marca.Descripcion = row.Cells[1].Value.ToString();
             marca.Estado = row.Cells[2].Value.ToString();

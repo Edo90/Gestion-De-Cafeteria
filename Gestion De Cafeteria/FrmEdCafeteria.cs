@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmEdCafeteria : Form
     {
         public Cafeteria cafeteria { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmEdCafeteria()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Gestion_De_Cafeteria
                 CmbCampus.ValueMember = "ID";
             }
 
-            var encargado = entities.Empleado.ToList();
+            var encargado = entities.Empleadoes.ToList();
             if (encargado.Count > 0)
             {
                 CmbEncargado.DataSource = encargado;
@@ -56,7 +56,7 @@ namespace Gestion_De_Cafeteria
         {           
             if (txtID.Text != "")
             {
-                Cafeteria cafeteria2 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
+                Cafeteria cafeteria2 = entities.Cafeterias.Find(int.Parse(txtID.Text));
                 cafeteria2.Descripcion = txtDescripcion.Text;
                 cafeteria2.ID_Campus = Convert.ToInt32(CmbCampus.SelectedValue);
                 cafeteria2.Encargado = Convert.ToInt32(CmbEncargado.SelectedValue);
@@ -64,11 +64,11 @@ namespace Gestion_De_Cafeteria
             }
             else
             {
-                entities.Cafeteria.Add(new Cafeteria
+                entities.Cafeterias.Add(new Cafeteria
                 {                    
                     Descripcion = txtDescripcion.Text,
-                    ID_Campus = Int32.Parse(CmbCampus.SelectedValue.ToString()),
-                    Encargado = Int32.Parse(CmbEncargado.SelectedValue.ToString()),
+                    ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
+                    Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
                     Estado = CmbEstado.SelectedIndex.ToString()
                 });
             }
@@ -86,10 +86,10 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Cafeteria cafeteria3 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
+            Cafeteria cafeteria3 = entities.Cafeterias.Find(Int32.Parse(txtID.Text));
             if (cafeteria3 != null)
             {
-                entities.Cafeteria.Remove(cafeteria3);
+                entities.Cafeterias.Remove(cafeteria3);
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }

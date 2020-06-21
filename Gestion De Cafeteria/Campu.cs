@@ -12,18 +12,17 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Empleado
+    public partial class Campu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empleado()
+        public Campu()
         {
             this.Cafeterias = new HashSet<Cafeteria>();
         }
     
-        public int IdEMpleado { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public decimal Salario { get; set; }
+        public int ID { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cafeteria> Cafeterias { get; set; }

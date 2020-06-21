@@ -12,15 +12,14 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Cafeteria
+    public partial class Usuario
     {
-        public int ID { get; set; }
-        public string Descripcion { get; set; }
-        public int ID_Campus { get; set; }
-        public int Encargado { get; set; }
+        public int IdUsuario { get; set; }
+        public string Nombre { get; set; }
+        public int Cedula { get; set; }
+        public string TipoUsuario { get; set; }
+        public Nullable<decimal> LimiteCredito { get; set; }
+        public System.DateTime FechaRegistro { get; set; }
         public string Estado { get; set; }
-    
-        public virtual Campu Campu { get; set; }
-        public virtual Empleado Empleado { get; set; }
     }
 }

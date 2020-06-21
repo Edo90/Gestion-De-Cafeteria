@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmProveedores : Form
     {
-        public Proveedores proveedor { get; set; }
-        private Entities entities = new Entities();
+        public Proveedore proveedor { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmProveedores()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Gestion_De_Cafeteria
         private void DgvProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvProveedores.SelectedRows[0];
-            Proveedores proveedor = new Proveedores();
+            Proveedore proveedor = new Proveedore();
             proveedor.IdProveedor = Int32.Parse(row.Cells[0].Value.ToString());
             proveedor.NombreComercial = row.Cells[1].Value.ToString();
             proveedor.RNC = row.Cells[2].Value.ToString();
