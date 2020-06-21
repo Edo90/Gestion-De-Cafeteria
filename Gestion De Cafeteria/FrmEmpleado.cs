@@ -38,8 +38,25 @@ namespace Gestion_De_Cafeteria
 
         private void CmdBuscar_Click(object sender, EventArgs e)
         {
+            ConsultarEmpleados();
+        }
+
+        private void ConsultarEmpleados()
+        {
             var empleados = from empleado in entity.Empleadoes
-                            where()
+                            where (empleado.IdEMpleado.ToString().StartsWith(txtBuscarPor.Text) ||
+                            empleado.Nombre.StartsWith(txtBuscarPor.Text) ||
+                            empleado.Salario.ToString().StartsWith(txtBuscarPor.Text) ||
+                            empleado.Direccion.StartsWith(txtBuscarPor.Text))
+                            select empleado;
+
+            empleadoGridView.DataSource = empleados.ToList();
+        }
+
+        private void empleadoGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var frmEmpleadoEd = new FrmEmpleadoEd();
+            frmEmpleadoEd.Show();
         }
     }
 }
