@@ -1,0 +1,233 @@
+﻿USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 6/21/2020 12:54:26 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Usuarios]') AND type in (N'U'))
+DROP TABLE [dbo].[Usuarios]
+GO
+
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 6/21/2020 12:54:26 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Usuarios](
+	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NOT NULL,
+	[Cedula] [int] NOT NULL,
+	[TipoUsuario] [varchar](13) NOT NULL,
+	[LimiteCredito] [numeric](10, 2) NULL,
+	[FechaRegistro] [date] NOT NULL,
+	[Estado] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdUsuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+-----------------------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Tipo_Usuario]    Script Date: 6/21/2020 12:53:46 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Tipo_Usuario]') AND type in (N'U'))
+DROP TABLE [dbo].[Tipo_Usuario]
+GO
+
+/****** Object:  Table [dbo].[Tipo_Usuario]    Script Date: 6/21/2020 12:53:46 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tipo_Usuario](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](100) NOT NULL,
+	[Estado] [char](2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+------------------------------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Proveedores]    Script Date: 6/21/2020 12:52:57 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Proveedores]') AND type in (N'U'))
+DROP TABLE [dbo].[Proveedores]
+GO
+
+/****** Object:  Table [dbo].[Proveedores]    Script Date: 6/21/2020 12:52:57 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Proveedores](
+	[IdProveedor] [int] IDENTITY(1,1) NOT NULL,
+	[NombreComercial] [varchar](50) NOT NULL,
+	[RNC] [varchar](50) NOT NULL,
+	[FechaRegistro] [date] NOT NULL,
+	[Estado] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdProveedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+------------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Marcas]    Script Date: 6/21/2020 12:52:23 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Marcas]') AND type in (N'U'))
+DROP TABLE [dbo].[Marcas]
+GO
+
+/****** Object:  Table [dbo].[Marcas]    Script Date: 6/21/2020 12:52:23 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Marcas](
+	[IdMarca] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](250) NOT NULL,
+	[Estado] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdMarca] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+----------------------------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Empleado]    Script Date: 6/21/2020 12:50:11 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Empleado]') AND type in (N'U'))
+DROP TABLE [dbo].[Empleado]
+GO
+
+/****** Object:  Table [dbo].[Empleado]    Script Date: 6/21/2020 12:50:11 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Empleado](
+	[IdEMpleado] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](20) NOT NULL,
+	[Direccion] [varchar](50) NOT NULL,
+	[Salario] [decimal](10, 2) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdEMpleado] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+ALTER TABLE [dbo].[Cafeteria] DROP CONSTRAINT [FK__Cafeteria__ID_Ca__32E0915F]
+GO
+
+ALTER TABLE [dbo].[Cafeteria] DROP CONSTRAINT [FK__Cafeteria__ID_Ca__2F10007B]
+GO
+
+ALTER TABLE [dbo].[Cafeteria] DROP CONSTRAINT [FK__Cafeteria__Encar__31EC6D26]
+GO
+
+/****** Object:  Table [dbo].[Cafeteria]    Script Date: 6/21/2020 12:49:28 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Cafeteria]') AND type in (N'U'))
+DROP TABLE [dbo].[Cafeteria]
+GO
+
+/****** Object:  Table [dbo].[Cafeteria]    Script Date: 6/21/2020 12:49:28 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Cafeteria](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](50) NOT NULL,
+	[ID_Campus] [int] NOT NULL,
+	[Encargado] [int] NOT NULL,
+	[Estado] [char](2) NULL,
+ CONSTRAINT [PK_Cafeteria] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Cafeteria]  WITH CHECK ADD FOREIGN KEY([Encargado])
+REFERENCES [dbo].[Empleado] ([IdEMpleado])
+GO
+
+ALTER TABLE [dbo].[Cafeteria]  WITH CHECK ADD FOREIGN KEY([ID_Campus])
+REFERENCES [dbo].[Campus] ([ID])
+GO
+
+ALTER TABLE [dbo].[Cafeteria]  WITH CHECK ADD FOREIGN KEY([ID_Campus])
+REFERENCES [dbo].[Campus] ([ID])
+GO
+
+
+--------------------------------------------------------------------------------------
+USE [GestionCafeteria]
+GO
+
+/****** Object:  Table [dbo].[Campus]    Script Date: 6/21/2020 12:51:02 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Campus]') AND type in (N'U'))
+DROP TABLE [dbo].[Campus]
+GO
+
+/****** Object:  Table [dbo].[Campus]    Script Date: 6/21/2020 12:51:02 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Campus](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](50) NOT NULL,
+	[Estado] [char](2) NULL,
+ CONSTRAINT [PK_Campus] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+

@@ -292,6 +292,8 @@
       <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
       <LastGenOutput>GestionCafeteriaEntity.cs</LastGenOutput>
     </Content>
+    <Content Include="SQL Statements\CreateDatabaseQuery.txt" />
+    <Content Include="SQL Statements\CreateTablesQueries.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
