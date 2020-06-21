@@ -46,5 +46,10 @@ namespace Gestion_De_Cafeteria
             var frmEmpleado = new FrmEmpleado();
             frmEmpleado.Show();
         }
+
+        private void acercaDelEquipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
