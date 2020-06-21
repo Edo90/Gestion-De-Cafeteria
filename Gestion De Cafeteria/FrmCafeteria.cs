@@ -33,13 +33,13 @@ namespace Gestion_De_Cafeteria
                                         join emp in entities.Empleadoes on caf.Encargado equals emp.IdEMpleado
                                         select new 
                                         {
-                                            ID = caf.ID,
-                                            Descripcion = caf.Descripcion,
+                                            caf.ID,
+                                            caf.Descripcion,
                                             idCampus = caf.ID_Campus,
                                             nombreCampus = cam.Descripcion,
                                             idEncargado = caf.Encargado,
                                             nombreEncargado = emp.Nombre,
-                                            Estado = caf.Estado
+                                            caf.Estado
                                         }).ToList();
 
             DgvCafeteria.DataSource = listadoCafeterias.ToList();              

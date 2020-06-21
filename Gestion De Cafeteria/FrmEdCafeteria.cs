@@ -56,7 +56,7 @@ namespace Gestion_De_Cafeteria
         {           
             if (txtID.Text != "")
             {
-                Cafeteria cafeteria2 = entities.Cafeterias.Find(Int32.Parse(txtID.Text));
+                Cafeteria cafeteria2 = entities.Cafeterias.Find(int.Parse(txtID.Text));
                 cafeteria2.Descripcion = txtDescripcion.Text;
                 cafeteria2.ID_Campus = Convert.ToInt32(CmbCampus.SelectedValue);
                 cafeteria2.Encargado = Convert.ToInt32(CmbEncargado.SelectedValue);
@@ -67,8 +67,8 @@ namespace Gestion_De_Cafeteria
                 entities.Cafeterias.Add(new Cafeteria
                 {                    
                     Descripcion = txtDescripcion.Text,
-                    ID_Campus = Int32.Parse(CmbCampus.SelectedValue.ToString()),
-                    Encargado = Int32.Parse(CmbEncargado.SelectedValue.ToString()),
+                    ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
+                    Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
                     Estado = CmbEstado.SelectedIndex.ToString()
                 });
             }
