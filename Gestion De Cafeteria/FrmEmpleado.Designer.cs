@@ -184,6 +184,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmEmpleado";
             this.Text = "FrmEmpleado";
+            this.Activated += new System.EventHandler(this.FrmEmpleado_Load);
             this.Load += new System.EventHandler(this.FrmEmpleado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

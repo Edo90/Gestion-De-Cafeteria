@@ -44,11 +44,12 @@ namespace Gestion_De_Cafeteria
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
-            FieldValidation();
+            if (!FieldsAreValid())
+                return;
             empleado = new Empleado()
             {
                 IdEMpleado = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
-                Nombre = $"{txtNombre.Text} {txtApellido.Text}",
+                Nombre = $"{txtNombre.Text.ToUpperInvariant()} {txtApellido.Text.ToUpperInvariant()}",
                 Direccion = txtDireccion.Text,
                 Salario = salaryNumericTB.Value
             };
@@ -60,16 +61,19 @@ namespace Gestion_De_Cafeteria
             this.Dispose();
         }
 
-        private void FieldValidation()
+        private bool FieldsAreValid()
         {
             if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text))
             {
                 MessageBox.Show($"Los campos Nombre y Apellido son requeridos", "Campos requeridos");
+                return false;
             }
             if (salaryNumericTB.Value == 0)
             {
                 MessageBox.Show($"Salario debe ser mayor que 0", "Requerido");
+                return false;
             }
+            return true;
         }
     }
 }
