@@ -100,7 +100,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // empleadoGridView
             // 
@@ -123,6 +122,7 @@
             this.empleadoGridView.RowTemplate.Height = 24;
             this.empleadoGridView.Size = new System.Drawing.Size(731, 247);
             this.empleadoGridView.TabIndex = 5;
+            this.empleadoGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellContentClick);
             this.empleadoGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellDoubleClick);
             // 
             // idEMpleadoDataGridViewTextBoxColumn

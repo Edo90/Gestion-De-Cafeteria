@@ -31,18 +31,18 @@
             this.CmdEliminar = new System.Windows.Forms.Button();
             this.CmdGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.salaryNumericTB = new System.Windows.Forms.NumericUpDown();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.SalaryNumericTB = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SalaryNumericTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdEliminar
@@ -64,13 +64,14 @@
             this.CmdGuardar.TabIndex = 7;
             this.CmdGuardar.Text = "Guardar";
             this.CmdGuardar.UseVisualStyleBackColor = true;
+            this.CmdGuardar.Click += new System.EventHandler(this.CmdGuardar_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.SalaryNumericTB);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.txtDescripcion);
+            this.panel1.Controls.Add(this.salaryNumericTB);
+            this.panel1.Controls.Add(this.txtDireccion);
+            this.panel1.Controls.Add(this.txtApellido);
+            this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -83,13 +84,37 @@
             this.panel1.Size = new System.Drawing.Size(437, 302);
             this.panel1.TabIndex = 6;
             // 
-            // txtDescripcion
+            // salaryNumericTB
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(128, 78);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(160, 22);
-            this.txtDescripcion.TabIndex = 6;
+            this.salaryNumericTB.DecimalPlaces = 2;
+            this.salaryNumericTB.Location = new System.Drawing.Point(128, 228);
+            this.salaryNumericTB.Name = "salaryNumericTB";
+            this.salaryNumericTB.Size = new System.Drawing.Size(160, 22);
+            this.salaryNumericTB.TabIndex = 12;
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(128, 182);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(160, 22);
+            this.txtDireccion.TabIndex = 11;
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(128, 129);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(160, 22);
+            this.txtApellido.TabIndex = 10;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(128, 78);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(160, 22);
+            this.txtNombre.TabIndex = 6;
             // 
             // txtID
             // 
@@ -140,7 +165,6 @@
             this.label2.Size = new System.Drawing.Size(58, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -151,29 +175,6 @@
             this.label1.Size = new System.Drawing.Size(21, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(128, 129);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 22);
-            this.textBox1.TabIndex = 10;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(128, 182);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 22);
-            this.textBox2.TabIndex = 11;
-            // 
-            // SalaryNumericTB
-            // 
-            this.SalaryNumericTB.Location = new System.Drawing.Point(128, 228);
-            this.SalaryNumericTB.Name = "SalaryNumericTB";
-            this.SalaryNumericTB.Size = new System.Drawing.Size(160, 22);
-            this.SalaryNumericTB.TabIndex = 12;
             // 
             // FrmEmpleadoEd
             // 
@@ -188,7 +189,7 @@
             this.Load += new System.EventHandler(this.FrmEmpleadoEd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SalaryNumericTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,15 +199,15 @@
         private System.Windows.Forms.Button CmdEliminar;
         private System.Windows.Forms.Button CmdGuardar;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown SalaryNumericTB;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown salaryNumericTB;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtApellido;
     }
 }

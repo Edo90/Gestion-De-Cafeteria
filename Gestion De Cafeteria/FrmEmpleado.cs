@@ -18,11 +18,6 @@ namespace Gestion_De_Cafeteria
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmEmpleado_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'gestionCafeteriaDataSet.Empleado' table. You can move, or remove it, as needed.
@@ -55,8 +50,24 @@ namespace Gestion_De_Cafeteria
 
         private void empleadoGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var frmEmpleadoEd = new FrmEmpleadoEd();
+            var selectedRow = empleadoGridView.SelectedRows[0];
+            var empleado = new Empleado()
+            {
+                IdEMpleado = (int)selectedRow.Cells[0].Value,
+                Nombre = selectedRow.Cells[1].Value.ToString(),
+                Direccion = selectedRow.Cells[2].Value.ToString(),
+                Salario = (decimal)selectedRow.Cells[3].Value
+            };
+
+
+            var frmEmpleadoEd = new FrmEmpleadoEd(empleado);
             frmEmpleadoEd.Show();
+
+        }
+
+        private void empleadoGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
