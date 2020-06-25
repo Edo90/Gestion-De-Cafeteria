@@ -29,7 +29,7 @@ namespace Gestion_De_Cafeteria
         {
             var articulo = new Articulo
             {
-                Id = String.IsNullOrEmpty(idTb.Text) ? 0 : int.Parse(idTb.Text),
+                Id = string.IsNullOrEmpty(idTb.Text) ? 0 : int.Parse(idTb.Text),
                 Descripcion = descriptionTb.Text,
                 MarcaId = entities.Marcas.Where(x => x.Descripcion == marcaCb.Text)
                                         .Select(x => x.IdMarca)

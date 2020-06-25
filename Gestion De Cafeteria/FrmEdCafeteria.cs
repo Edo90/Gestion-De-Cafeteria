@@ -31,7 +31,7 @@ namespace Gestion_De_Cafeteria
                 CmbEncargado.SelectedValue = cafeteria.Encargado;
                 CmbEstado.SelectedIndex = Int32.Parse(cafeteria.Estado);
             }
-            
+
         }
         public void llenarCombox()
         {
@@ -53,7 +53,7 @@ namespace Gestion_De_Cafeteria
 
         }
         private void CmdGuardar_Click(object sender, EventArgs e)
-        {           
+        {
             if (txtID.Text != "")
             {
                 Cafeteria cafeteria2 = entities.Cafeterias.Find(int.Parse(txtID.Text));
@@ -65,7 +65,7 @@ namespace Gestion_De_Cafeteria
             else
             {
                 entities.Cafeterias.Add(new Cafeteria
-                {                    
+                {
                     Descripcion = txtDescripcion.Text,
                     ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
                     Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
@@ -93,9 +93,10 @@ namespace Gestion_De_Cafeteria
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }
-            else { 
+            else
+            {
                 MessageBox.Show("La cafeteria no existe");
-        }
+            }
             this.Close();
         }
     }

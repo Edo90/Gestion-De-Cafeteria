@@ -69,5 +69,11 @@ namespace Gestion_De_Cafeteria
             var frmProveedores = new FrmProveedores();
             frmProveedores.Show();
         }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmFacturacion = new FacturacionDeArticulosForm();
+            frmFacturacion.Show();
+        }
     }
 }

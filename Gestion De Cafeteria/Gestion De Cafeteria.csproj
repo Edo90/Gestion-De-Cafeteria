@@ -80,6 +80,18 @@
     <Compile Include="Empleado.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="FacturacionDeArticulosEdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosEdForm.Designer.cs">
+      <DependentUpon>FacturacionDeArticulosEdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosForm.Designer.cs">
+      <DependentUpon>FacturacionDeArticulosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturacion_Articulos.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
@@ -218,6 +230,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ArticulosFormEd.resx">
       <DependentUpon>ArticulosFormEd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionDeArticulosEdForm.resx">
+      <DependentUpon>FacturacionDeArticulosEdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionDeArticulosForm.resx">
+      <DependentUpon>FacturacionDeArticulosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
