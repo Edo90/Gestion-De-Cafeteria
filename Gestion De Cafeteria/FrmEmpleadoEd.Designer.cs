@@ -41,13 +41,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cedulaTB = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comisionTB = new System.Windows.Forms.NumericUpDown();
+            this.fechaIngresoTB = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.estadoComboBox = new System.Windows.Forms.ComboBox();
+            this.tandaComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comisionTB)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdEliminar
             // 
-            this.CmdEliminar.Location = new System.Drawing.Point(410, 353);
+            this.CmdEliminar.Location = new System.Drawing.Point(423, 658);
             this.CmdEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdEliminar.Name = "CmdEliminar";
             this.CmdEliminar.Size = new System.Drawing.Size(100, 66);
@@ -57,7 +68,7 @@
             // 
             // CmdGuardar
             // 
-            this.CmdGuardar.Location = new System.Drawing.Point(268, 353);
+            this.CmdGuardar.Location = new System.Drawing.Point(271, 658);
             this.CmdGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdGuardar.Name = "CmdGuardar";
             this.CmdGuardar.Size = new System.Drawing.Size(100, 66);
@@ -68,6 +79,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tandaComboBox);
+            this.panel1.Controls.Add(this.estadoComboBox);
+            this.panel1.Controls.Add(this.fechaIngresoTB);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.comisionTB);
+            this.panel1.Controls.Add(this.cedulaTB);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.salaryNumericTB);
             this.panel1.Controls.Add(this.txtDireccion);
             this.panel1.Controls.Add(this.txtApellido);
@@ -81,7 +102,7 @@
             this.panel1.Location = new System.Drawing.Point(182, 32);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(437, 302);
+            this.panel1.Size = new System.Drawing.Size(435, 581);
             this.panel1.TabIndex = 6;
             // 
             // salaryNumericTB
@@ -176,11 +197,117 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
+            // cedulaTB
+            // 
+            this.cedulaTB.Location = new System.Drawing.Point(128, 289);
+            this.cedulaTB.Margin = new System.Windows.Forms.Padding(4);
+            this.cedulaTB.Name = "cedulaTB";
+            this.cedulaTB.Size = new System.Drawing.Size(160, 22);
+            this.cedulaTB.TabIndex = 16;
+            this.cedulaTB.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 396);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "% Comision";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 345);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Tanda";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(33, 289);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 17);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Cedula";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // comisionTB
+            // 
+            this.comisionTB.Location = new System.Drawing.Point(128, 396);
+            this.comisionTB.Name = "comisionTB";
+            this.comisionTB.Size = new System.Drawing.Size(160, 22);
+            this.comisionTB.TabIndex = 18;
+            // 
+            // fechaIngresoTB
+            // 
+            this.fechaIngresoTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fechaIngresoTB.Location = new System.Drawing.Point(128, 440);
+            this.fechaIngresoTB.Margin = new System.Windows.Forms.Padding(4);
+            this.fechaIngresoTB.Name = "fechaIngresoTB";
+            this.fechaIngresoTB.ReadOnly = true;
+            this.fechaIngresoTB.Size = new System.Drawing.Size(160, 22);
+            this.fechaIngresoTB.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Location = new System.Drawing.Point(33, 496);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 19);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Estado";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(33, 440);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 19);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Ingreso";
+            // 
+            // estadoComboBox
+            // 
+            this.estadoComboBox.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.estadoComboBox.Location = new System.Drawing.Point(128, 489);
+            this.estadoComboBox.Name = "estadoComboBox";
+            this.estadoComboBox.Size = new System.Drawing.Size(160, 24);
+            this.estadoComboBox.TabIndex = 22;
+            // 
+            // tandaComboBox
+            // 
+            this.tandaComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Mañana",
+            "Tarde",
+            "Noche"});
+            this.tandaComboBox.Items.AddRange(new object[] {
+            "Mañana",
+            "Tarde",
+            "Noche"});
+            this.tandaComboBox.Location = new System.Drawing.Point(128, 338);
+            this.tandaComboBox.Name = "tandaComboBox";
+            this.tandaComboBox.Size = new System.Drawing.Size(160, 24);
+            this.tandaComboBox.TabIndex = 23;
+            // 
             // FrmEmpleadoEd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 773);
             this.Controls.Add(this.CmdEliminar);
             this.Controls.Add(this.CmdGuardar);
             this.Controls.Add(this.panel1);
@@ -190,6 +317,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comisionTB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -209,5 +337,15 @@
         private System.Windows.Forms.NumericUpDown salaryNumericTB;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox cedulaTB;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox estadoComboBox;
+        private System.Windows.Forms.TextBox fechaIngresoTB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown comisionTB;
+        private System.Windows.Forms.ComboBox tandaComboBox;
     }
 }

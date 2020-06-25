@@ -38,6 +38,11 @@ namespace Gestion_De_Cafeteria
                 txtApellido.Text = empleado.Nombre.Split()[1] ?? "";
                 txtDireccion.Text = empleado.Direccion;
                 salaryNumericTB.Value = empleado.Salario;
+                fechaIngresoTB.Text = empleado.Fecha_Ingreso.ToString();
+                estadoComboBox.SelectedItem = empleado.Estado == true ? "Activo" : "Inactivo";
+                cedulaTB.Text = empleado.Cedula;
+                tandaComboBox.SelectedItem = empleado.Tanda_labor;
+                comisionTB.Value = decimal.Parse(empleado.Porciento_Comision == null ? "0" : empleado.Porciento_Comision.Value.ToString());
             }
 
         }
@@ -51,7 +56,12 @@ namespace Gestion_De_Cafeteria
                 IdEMpleado = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
                 Nombre = $"{txtNombre.Text.ToUpperInvariant()} {txtApellido.Text.ToUpperInvariant()}",
                 Direccion = txtDireccion.Text,
-                Salario = salaryNumericTB.Value
+                Salario = salaryNumericTB.Value,
+                Cedula = cedulaTB.Text,
+                Tanda_labor = tandaComboBox.SelectedItem.ToString(),
+                Fecha_Ingreso = string.IsNullOrEmpty(txtID.Text) ? DateTime.Now : DateTime.Parse(fechaIngresoTB.Text),
+                Estado = estadoComboBox.SelectedItem.ToString() == "Activo",
+                Porciento_Comision = int.Parse(comisionTB.Value.ToString())
             };
 
             if (empleado != null)
@@ -73,7 +83,52 @@ namespace Gestion_De_Cafeteria
                 MessageBox.Show($"Salario debe ser mayor que 0", "Requerido");
                 return false;
             }
+            if (string.IsNullOrEmpty(cedulaTB.Text))
+            {
+                MessageBox.Show($"Debe agregar una cedula", "Requerido");
+                return false;
+            }
+            if (string.IsNullOrEmpty(tandaComboBox.SelectedItem?.ToString()))
+            {
+                MessageBox.Show($"Debe seleccionar una tanda para el empleado", "Requerido");
+                return false;
+            }
+            if (string.IsNullOrEmpty(estadoComboBox.SelectedItem?.ToString()))
+            {
+                MessageBox.Show($"Debe seleccionar una tanda para el empleado", "Requerido");
+                return false;
+            }
             return true;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

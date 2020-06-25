@@ -14,10 +14,22 @@ namespace Gestion_De_Cafeteria
     
     public partial class Proveedore
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Proveedore()
+        {
+            this.ProveedoresProductos = new HashSet<ProveedoresProducto>();
+            this.Articulos = new HashSet<Articulo>();
+        }
+    
         public int IdProveedor { get; set; }
         public string NombreComercial { get; set; }
         public string RNC { get; set; }
         public System.DateTime FechaRegistro { get; set; }
         public string Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProveedoresProducto> ProveedoresProductos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Articulo> Articulos { get; set; }
     }
 }

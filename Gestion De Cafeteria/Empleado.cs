@@ -18,14 +18,22 @@ namespace Gestion_De_Cafeteria
         public Empleado()
         {
             this.Cafeterias = new HashSet<Cafeteria>();
+            this.Facturacion_Articulos = new HashSet<Facturacion_Articulos>();
         }
     
         public int IdEMpleado { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public decimal Salario { get; set; }
+        public string Cedula { get; set; }
+        public string Tanda_labor { get; set; }
+        public Nullable<int> Porciento_Comision { get; set; }
+        public System.DateTime Fecha_Ingreso { get; set; }
+        public bool Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cafeteria> Cafeterias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
     }
 }

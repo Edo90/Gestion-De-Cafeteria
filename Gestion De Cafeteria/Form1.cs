@@ -51,5 +51,29 @@ namespace Gestion_De_Cafeteria
         {
 
         }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmArticulos = new ArticulosForm();
+            frmArticulos.Show();
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmMarcas = new FrmMarcas();
+            frmMarcas.Show();
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmProveedores = new FrmProveedores();
+            frmProveedores.Show();
+        }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmFacturacion = new FacturacionDeArticulosForm();
+            frmFacturacion.Show();
+        }
     }
 }

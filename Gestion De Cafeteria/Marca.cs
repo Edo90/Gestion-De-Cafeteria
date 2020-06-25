@@ -14,8 +14,17 @@ namespace Gestion_De_Cafeteria
     
     public partial class Marca
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Marca()
+        {
+            this.Articulos = new HashSet<Articulo>();
+        }
+    
         public int IdMarca { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Articulo> Articulos { get; set; }
     }
 }

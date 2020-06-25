@@ -34,18 +34,16 @@
             this.txtBuscarPor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.empleadoGridView = new System.Windows.Forms.DataGridView();
-            this.idEMpleadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gestionCafeteriaDataSet = new Gestion_De_Cafeteria.GestionCafeteriaDataSet();
             this.empleadoTableAdapter = new Gestion_De_Cafeteria.GestionCafeteriaDataSetTableAdapters.EmpleadoTableAdapter();
+            this.empleadoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.empleadoGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionCafeteriaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadoGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdAgregar
@@ -101,66 +99,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda";
             // 
-            // empleadoGridView
-            // 
-            this.empleadoGridView.AllowUserToAddRows = false;
-            this.empleadoGridView.AllowUserToDeleteRows = false;
-            this.empleadoGridView.AutoGenerateColumns = false;
-            this.empleadoGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.empleadoGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idEMpleadoDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.direccionDataGridViewTextBoxColumn,
-            this.salarioDataGridViewTextBoxColumn});
-            this.empleadoGridView.DataSource = this.empleadoBindingSource;
-            this.empleadoGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.empleadoGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.empleadoGridView.Location = new System.Drawing.Point(67, 202);
-            this.empleadoGridView.Name = "empleadoGridView";
-            this.empleadoGridView.ReadOnly = true;
-            this.empleadoGridView.RowHeadersWidth = 51;
-            this.empleadoGridView.RowTemplate.Height = 24;
-            this.empleadoGridView.Size = new System.Drawing.Size(731, 247);
-            this.empleadoGridView.TabIndex = 5;
-            this.empleadoGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellContentClick);
-            this.empleadoGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellDoubleClick);
-            // 
-            // idEMpleadoDataGridViewTextBoxColumn
-            // 
-            this.idEMpleadoDataGridViewTextBoxColumn.DataPropertyName = "IdEMpleado";
-            this.idEMpleadoDataGridViewTextBoxColumn.HeaderText = "IdEMpleado";
-            this.idEMpleadoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idEMpleadoDataGridViewTextBoxColumn.Name = "idEMpleadoDataGridViewTextBoxColumn";
-            this.idEMpleadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idEMpleadoDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // direccionDataGridViewTextBoxColumn
-            // 
-            this.direccionDataGridViewTextBoxColumn.DataPropertyName = "Direccion";
-            this.direccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            this.direccionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
-            this.direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.direccionDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // salarioDataGridViewTextBoxColumn
-            // 
-            this.salarioDataGridViewTextBoxColumn.DataPropertyName = "Salario";
-            this.salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
-            this.salarioDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
-            this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salarioDataGridViewTextBoxColumn.Width = 125;
-            // 
             // empleadoBindingSource
             // 
             this.empleadoBindingSource.DataMember = "Empleado";
@@ -175,6 +113,27 @@
             // 
             this.empleadoTableAdapter.ClearBeforeFill = true;
             // 
+            // empleadoBindingSource1
+            // 
+            this.empleadoBindingSource1.DataMember = "Empleado";
+            this.empleadoBindingSource1.DataSource = this.gestionCafeteriaDataSet;
+            // 
+            // empleadoGridView
+            // 
+            this.empleadoGridView.AllowUserToAddRows = false;
+            this.empleadoGridView.AllowUserToDeleteRows = false;
+            this.empleadoGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.empleadoGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.empleadoGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.empleadoGridView.Location = new System.Drawing.Point(67, 202);
+            this.empleadoGridView.Name = "empleadoGridView";
+            this.empleadoGridView.ReadOnly = true;
+            this.empleadoGridView.RowHeadersWidth = 51;
+            this.empleadoGridView.RowTemplate.Height = 24;
+            this.empleadoGridView.Size = new System.Drawing.Size(731, 247);
+            this.empleadoGridView.TabIndex = 5;
+            this.empleadoGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellDoubleClick);
+            // 
             // FrmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,9 +147,10 @@
             this.Load += new System.EventHandler(this.FrmEmpleado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.empleadoGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gestionCafeteriaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.empleadoGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,13 +162,10 @@
         private System.Windows.Forms.TextBox txtBuscarPor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView empleadoGridView;
         private GestionCafeteriaDataSet gestionCafeteriaDataSet;
         private System.Windows.Forms.BindingSource empleadoBindingSource;
         private GestionCafeteriaDataSetTableAdapters.EmpleadoTableAdapter empleadoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idEMpleadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource empleadoBindingSource1;
+        private System.Windows.Forms.DataGridView empleadoGridView;
     }
 }
