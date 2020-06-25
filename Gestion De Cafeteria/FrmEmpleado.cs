@@ -20,8 +20,9 @@ namespace Gestion_De_Cafeteria
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gestionCafeteriaDataSet.Empleado' table. You can move, or remove it, as needed.
-            this.empleadoTableAdapter.Fill(this.gestionCafeteriaDataSet.Empleado);
+            //// TODO: This line of code loads data into the 'gestionCafeteriaDataSet.Empleado' table. You can move, or remove it, as needed.
+            //this.empleadoTableAdapter.Fill(this.gestionCafeteriaDataSet.Empleado);
+            ConsultarEmpleados();
 
         }
 
@@ -42,7 +43,10 @@ namespace Gestion_De_Cafeteria
                             where (empleado.IdEMpleado.ToString().StartsWith(txtBuscarPor.Text) ||
                             empleado.Nombre.StartsWith(txtBuscarPor.Text) ||
                             empleado.Salario.ToString().StartsWith(txtBuscarPor.Text) ||
-                            empleado.Direccion.StartsWith(txtBuscarPor.Text))
+                            empleado.Direccion.StartsWith(txtBuscarPor.Text) ||
+                            empleado.Tanda_labor.StartsWith(txtBuscarPor.Text) ||
+                            empleado.Porciento_Comision.Value.ToString().StartsWith(txtBuscarPor.Text)
+                            )
                             select empleado;
 
             empleadoGridView.DataSource = empleados.ToList();
@@ -56,7 +60,12 @@ namespace Gestion_De_Cafeteria
                 IdEMpleado = (int)selectedRow.Cells[0].Value,
                 Nombre = selectedRow.Cells[1].Value.ToString(),
                 Direccion = selectedRow.Cells[2].Value.ToString(),
-                Salario = (decimal)selectedRow.Cells[3].Value
+                Salario = (decimal)selectedRow.Cells[3].Value,
+                Cedula = selectedRow.Cells[4].Value.ToString(),
+                Tanda_labor = selectedRow.Cells[5].Value.ToString(),
+                Porciento_Comision = int.Parse(selectedRow.Cells[6].Value.ToString()),
+                Fecha_Ingreso = DateTime.Parse(selectedRow.Cells[7].Value.ToString()),
+                Estado = (bool)selectedRow.Cells[8].Value
             };
 
 
@@ -65,9 +74,5 @@ namespace Gestion_De_Cafeteria
 
         }
 
-        private void empleadoGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

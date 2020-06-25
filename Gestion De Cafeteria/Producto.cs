@@ -12,23 +12,20 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class Producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
+        public Producto()
         {
-            this.Facturacion_Articulos = new HashSet<Facturacion_Articulos>();
+            this.ProveedoresProductos = new HashSet<ProveedoresProducto>();
         }
     
-        public int IdUsuario { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
-        public int Cedula { get; set; }
-        public string TipoUsuario { get; set; }
-        public Nullable<decimal> LimiteCredito { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
-        public string Estado { get; set; }
+        public decimal Precio { get; set; }
+        public Nullable<System.DateTime> FechaDeVencimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual ICollection<ProveedoresProducto> ProveedoresProductos { get; set; }
     }
 }

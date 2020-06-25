@@ -9,11 +9,22 @@
         <EntityTypeShape EntityType="GestionCafeteriaModel.Campu" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Marca" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Proveedore" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionCafeteriaModel.Tipo_Usuario" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Tipo_Usuario" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Usuario" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__2F10007B" ManuallyRouted="false" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Empleado" Width="1.5" PointX="0.75" PointY="7.875" />
         <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__Encar__31EC6D26" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Producto" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.ProveedoresProducto" Width="1.5" PointX="5.125" PointY="7.625" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Proveedor__Produ__4222D4EF" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Proveedor__Prove__412EB0B6" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Articulo" Width="1.5" PointX="8" PointY="7.5" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Facturacion_Articulos" Width="1.5" PointX="10.25" PointY="4.25" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Articulos__Marca__4E88ABD4" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Articulos__Prove__4F7CD00D" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Artic__534D60F1" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Emple__52593CB8" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
