@@ -48,7 +48,7 @@ namespace Gestion_De_Cafeteria
                             empleado.Porciento_Comision.Value.ToString().StartsWith(txtBuscarPor.Text)
                             )
                             select empleado;
-
+            var test = entity.Empleadoes.ToList();
             empleadoGridView.DataSource = empleados.ToList();
         }
 
