@@ -29,7 +29,7 @@ namespace Gestion_De_Cafeteria
             {
                 txtID.Text = campus.ID.ToString();
                 txtDescripcion.Text = campus.Descripcion;
-                CmbEstado.SelectedIndex = campus.Estado == "0" ? INACTIVE : ACTIVE;
+                CmbEstado.SelectedIndex = campus.Estado.Trim() == "0" ? INACTIVE : ACTIVE;
             }
             
         }
