@@ -47,7 +47,7 @@ namespace Gestion_De_Cafeteria
             usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
             usuario.Nombre = row.Cells[1].Value.ToString();
             usuario.Cedula = Int32.Parse(row.Cells[2].Value.ToString());
-            usuario.TipoUsuario = row.Cells[3].Value.ToString();
+            usuario.TipoUsuario = row.Cells[3].Value == null ? String.Empty : row.Cells[3].Value.ToString();
             usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
             usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
             usuario.Estado = row.Cells[6].Value.ToString();
@@ -62,7 +62,6 @@ namespace Gestion_De_Cafeteria
                               where (em.IdUsuario.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Nombre.StartsWith(TxtDatoABuscar.Text) ||
                             em.Cedula.ToString().StartsWith(TxtDatoABuscar.Text) ||
-                            em.TipoUsuario.StartsWith(TxtDatoABuscar.Text) ||
                             em.LimiteCredito.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Estado.StartsWith(TxtDatoABuscar.Text)
@@ -82,6 +81,11 @@ namespace Gestion_De_Cafeteria
         }
 
         private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -48,7 +48,7 @@
             this.panel1.Controls.Add(this.txtBuscarPor);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(895, 73);
             this.panel1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // CmdAgregar
             // 
             this.CmdAgregar.Location = new System.Drawing.Point(721, 9);
-            this.CmdAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAgregar.Name = "CmdAgregar";
             this.CmdAgregar.Size = new System.Drawing.Size(100, 59);
             this.CmdAgregar.TabIndex = 3;
@@ -68,7 +68,7 @@
             // CmdBuscar
             // 
             this.CmdBuscar.Location = new System.Drawing.Point(577, 9);
-            this.CmdBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdBuscar.Name = "CmdBuscar";
             this.CmdBuscar.Size = new System.Drawing.Size(100, 59);
             this.CmdBuscar.TabIndex = 2;
@@ -79,7 +79,7 @@
             // txtBuscarPor
             // 
             this.txtBuscarPor.Location = new System.Drawing.Point(109, 27);
-            this.txtBuscarPor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarPor.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarPor.Name = "txtBuscarPor";
             this.txtBuscarPor.Size = new System.Drawing.Size(199, 22);
             this.txtBuscarPor.TabIndex = 1;
@@ -101,7 +101,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DgvCampus);
             this.panel2.Location = new System.Drawing.Point(16, 113);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(895, 313);
             this.panel2.TabIndex = 1;
@@ -113,7 +113,7 @@
             this.DgvCampus.AllowUserToDeleteRows = false;
             this.DgvCampus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCampus.Location = new System.Drawing.Point(-1, -1);
-            this.DgvCampus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgvCampus.Margin = new System.Windows.Forms.Padding(4);
             this.DgvCampus.Name = "DgvCampus";
             this.DgvCampus.ReadOnly = true;
             this.DgvCampus.RowHeadersWidth = 51;
@@ -129,9 +129,9 @@
             this.ClientSize = new System.Drawing.Size(928, 430);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCampus";
-            this.Text = "FrmCampus";
+            this.Text = "Campus";
             this.Activated += new System.EventHandler(this.FrmCampus_Activated);
             this.Load += new System.EventHandler(this.FrmCampus_Load);
             this.panel1.ResumeLayout(false);

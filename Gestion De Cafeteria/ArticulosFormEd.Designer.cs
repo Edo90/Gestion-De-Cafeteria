@@ -224,7 +224,7 @@
             this.Controls.Add(this.idTb);
             this.Controls.Add(this.groupBox1);
             this.Name = "ArticulosFormEd";
-            this.Text = "ArticulosFormEd";
+            this.Text = "Edicion de Articulos";
             this.Load += new System.EventHandler(this.ArticulosFormEd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.costoN)).EndInit();
             this.ResumeLayout(false);
