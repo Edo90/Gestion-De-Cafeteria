@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Gestion_De_Cafeteria
 {
@@ -20,17 +21,34 @@ namespace Gestion_De_Cafeteria
 
         private void buscarBtn_Click(object sender, EventArgs e)
         {
-            var articulos = entities.Articulos.ToList();
+            ConsultaArticulos();
+        }
 
+        private void ConsultaArticulos()
+        {
             var search = txtBuscarPor.Text;
 
-            var result = articulos.Find(x => x.Costo.ToString() == search ||
-            x.Descripcion.ToString() == search ||
-            x.Estado.ToString() == search ||
-            x.Existencia.ToString() == search ||
-            x.Id.ToString() == search);
-
-            DgvArticulos.DataSource = result;
+            var result = from articulo in entities.Articulos
+                         where (
+                         articulo.Id.ToString().StartsWith(search) ||
+                         articulo.Costo.ToString().StartsWith(search) ||
+                         articulo.Descripcion.StartsWith(search) ||
+                         articulo.Marca.Descripcion.StartsWith(search) ||
+                         articulo.Proveedore.NombreComercial.StartsWith(search)
+                         )
+                         select new
+                         {
+                             articulo.Id,
+                             articulo.Descripcion,
+                             articulo.Costo,
+                             articulo.Estado,
+                             articulo.Existencia,
+                             Marca = articulo.Marca.Descripcion,
+                             Proveedor = articulo.Proveedore.NombreComercial
+                         };
+            var test = result.ToList();
+            DgvArticulos.DataSource = result.ToList();
+            DgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void agregarBtn_Click(object sender, EventArgs e)
@@ -51,8 +69,12 @@ namespace Gestion_De_Cafeteria
 
         private void ArticulosForm_Load(object sender, EventArgs e)
         {
-            var articulos = entities.Articulos.ToList();
-            DgvArticulos.DataSource = articulos;
+            ConsultaArticulos();
+        }
+
+        private void ArticulosForm_Activated(object sender, EventArgs e)
+        {
+            ConsultaArticulos();
         }
     }
 }

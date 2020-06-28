@@ -70,7 +70,6 @@
     <Compile Include="ArticulosFormEd.Designer.cs">
       <DependentUpon>ArticulosFormEd.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArticuloViewModel.cs" />
     <Compile Include="Cafeteria.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>

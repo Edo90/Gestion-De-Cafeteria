@@ -22,26 +22,15 @@ namespace Gestion_De_Cafeteria
 
         private void FrmCampus_Load(object sender, EventArgs e)
         {
-            ConsultarCampus();
+            ConsultarPorCriterio();
         }
 
-        private void ConsultarCampus()
-        {
-            var listadoCampus = from cam in entities.Campus
-                                select new
-                                {
-                                    ID = cam.ID,
-                                    Descripcion = cam.Descripcion,
-                                    Estado = cam.Estado
-                                };
-                DgvCampus.DataSource = listadoCampus.ToList();            
-        }
         
         private void CmdBuscar_Click(object sender, EventArgs e)
         {
-            consultarPorCriterio();
+            ConsultarPorCriterio();
         }
-        private void consultarPorCriterio()
+        private void ConsultarPorCriterio()
         {
             var campus = from cam in entities.Campus
                          where (cam.ID.ToString().StartsWith(txtBuscarPor.Text) ||
@@ -50,11 +39,12 @@ namespace Gestion_De_Cafeteria
                          )
                          select new
                          {
-                             ID = cam.ID,
-                             Descripcion = cam.Descripcion,
-                             Estado = cam.Estado
+                             cam.ID,
+                             cam.Descripcion,
+                             cam.Estado
                          };
             DgvCampus.DataSource = campus.ToList();
+            DgvCampus.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CmdAgregar_Click(object sender, EventArgs e)
@@ -65,7 +55,7 @@ namespace Gestion_De_Cafeteria
 
         private void FrmCampus_Activated(object sender, EventArgs e)
         {
-            ConsultarCampus();
+            ConsultarPorCriterio();
         }
 
         private void DgvCampus_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

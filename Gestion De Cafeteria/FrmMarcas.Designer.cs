@@ -44,20 +44,24 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DgvMarcas);
-            this.panel2.Location = new System.Drawing.Point(12, 93);
+            this.panel2.Location = new System.Drawing.Point(148, 145);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 253);
+            this.panel2.Size = new System.Drawing.Size(591, 251);
             this.panel2.TabIndex = 3;
             // 
             // DgvMarcas
             // 
             this.DgvMarcas.AllowUserToAddRows = false;
             this.DgvMarcas.AllowUserToDeleteRows = false;
+            this.DgvMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMarcas.Location = new System.Drawing.Point(13, 3);
+            this.DgvMarcas.Location = new System.Drawing.Point(4, 4);
+            this.DgvMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DgvMarcas.Name = "DgvMarcas";
             this.DgvMarcas.ReadOnly = true;
-            this.DgvMarcas.Size = new System.Drawing.Size(594, 245);
+            this.DgvMarcas.RowHeadersWidth = 51;
+            this.DgvMarcas.Size = new System.Drawing.Size(581, 241);
             this.DgvMarcas.TabIndex = 0;
             this.DgvMarcas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMarcas_CellDoubleClick);
             // 
@@ -68,16 +72,18 @@
             this.panel1.Controls.Add(this.CmdBuscar);
             this.panel1.Controls.Add(this.TxtDatoABuscar);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(622, 66);
+            this.panel1.Size = new System.Drawing.Size(829, 81);
             this.panel1.TabIndex = 2;
             // 
             // CmdAgregar
             // 
-            this.CmdAgregar.Location = new System.Drawing.Point(538, 3);
+            this.CmdAgregar.Location = new System.Drawing.Point(717, 4);
+            this.CmdAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdAgregar.Name = "CmdAgregar";
-            this.CmdAgregar.Size = new System.Drawing.Size(69, 59);
+            this.CmdAgregar.Size = new System.Drawing.Size(92, 73);
             this.CmdAgregar.TabIndex = 3;
             this.CmdAgregar.Text = "Agregar";
             this.CmdAgregar.UseVisualStyleBackColor = true;
@@ -85,9 +91,10 @@
             // 
             // CmdBuscar
             // 
-            this.CmdBuscar.Location = new System.Drawing.Point(423, 3);
+            this.CmdBuscar.Location = new System.Drawing.Point(564, 4);
+            this.CmdBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdBuscar.Name = "CmdBuscar";
-            this.CmdBuscar.Size = new System.Drawing.Size(69, 59);
+            this.CmdBuscar.Size = new System.Drawing.Size(92, 73);
             this.CmdBuscar.TabIndex = 2;
             this.CmdBuscar.Text = "Buscar";
             this.CmdBuscar.UseVisualStyleBackColor = true;
@@ -95,27 +102,30 @@
             // 
             // TxtDatoABuscar
             // 
-            this.TxtDatoABuscar.Location = new System.Drawing.Point(98, 23);
+            this.TxtDatoABuscar.Location = new System.Drawing.Point(131, 28);
+            this.TxtDatoABuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtDatoABuscar.Name = "TxtDatoABuscar";
-            this.TxtDatoABuscar.Size = new System.Drawing.Size(290, 20);
+            this.TxtDatoABuscar.Size = new System.Drawing.Size(385, 22);
             this.TxtDatoABuscar.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 26);
+            this.label1.Location = new System.Drawing.Point(23, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.Size = new System.Drawing.Size(98, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Dato a Buscar";
             // 
             // FrmMarcas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 356);
+            this.ClientSize = new System.Drawing.Size(863, 438);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMarcas";
             this.Text = "Marcas";
             this.Activated += new System.EventHandler(this.FrmMarcas_Activated);

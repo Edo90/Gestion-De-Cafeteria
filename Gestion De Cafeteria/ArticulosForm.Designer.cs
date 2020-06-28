@@ -138,6 +138,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ArticulosForm";
             this.Text = "ArticulosForm";
+            this.Activated += new System.EventHandler(this.ArticulosForm_Activated);
             this.Load += new System.EventHandler(this.ArticulosForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

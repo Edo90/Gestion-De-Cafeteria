@@ -47,8 +47,10 @@ namespace Gestion_De_Cafeteria
                             empleado.Tanda_labor.StartsWith(txtBuscarPor.Text) ||
                             empleado.Porciento_Comision.Value.ToString().StartsWith(txtBuscarPor.Text)
                             )
-                            select empleado;
-            var test = entity.Empleadoes.ToList();
+                            select new { empleado.IdEMpleado,empleado.Nombre, empleado.Direccion, empleado.Salario, empleado.Cedula, empleado.Tanda_labor, empleado.Porciento_Comision, empleado.Fecha_Ingreso, empleado.Estado};
+
+
+
             empleadoGridView.DataSource = empleados.ToList();
         }
 
@@ -74,5 +76,9 @@ namespace Gestion_De_Cafeteria
 
         }
 
+        private void empleadoGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

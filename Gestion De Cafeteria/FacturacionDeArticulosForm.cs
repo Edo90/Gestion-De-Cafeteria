@@ -20,27 +20,43 @@ namespace Gestion_De_Cafeteria
 
         private void FacturacionDeArticulosForm_Load(object sender, EventArgs e)
         {
-            var facturas = entities.Facturacion_Articulos.ToList();
-            DgvFacturacion.DataSource = facturas;
+            ConsultarFacturacion();
         }
 
         private void buscarBtn_Click(object sender, EventArgs e)
         {
+            ConsultarFacturacion();
+        }
+
+        private void ConsultarFacturacion()
+        {
             var searchItem = TxtDatoABuscar.Text;
 
-            var result = from facturas in entities.Facturacion_Articulos where
-                         (facturas.Id.ToString().StartsWith(searchItem) ||
-                         facturas.Articulo.Descripcion.StartsWith(searchItem) ||
-                         facturas.Comentario.StartsWith(searchItem) ||
-                         facturas.Empleado.Nombre.ToString().StartsWith(searchItem) ||
-                         facturas.Estado.ToString().StartsWith(searchItem) ||
-                         facturas.Fecha_Venta.ToString().StartsWith(searchItem)||
-                         facturas.Monto_De_Articulo.ToString().StartsWith(searchItem)||
-                         facturas.Unidades_Vendidas.ToString().StartsWith(searchItem)||
-                         facturas.Usuario.Nombre.StartsWith(searchItem))
-                         select facturas;
+            var result = from facturas in entities.Facturacion_Articulos
+                         where
+                            (facturas.Id.ToString().StartsWith(searchItem) ||
+                            facturas.Articulo.Descripcion.StartsWith(searchItem) ||
+                            facturas.Comentario.StartsWith(searchItem) ||
+                            facturas.Empleado.Nombre.ToString().StartsWith(searchItem) ||
+                            facturas.Estado.ToString().StartsWith(searchItem) ||
+                            facturas.Fecha_Venta.ToString().StartsWith(searchItem) ||
+                            facturas.Monto_De_Articulo.ToString().StartsWith(searchItem) ||
+                            facturas.Unidades_Vendidas.ToString().StartsWith(searchItem) ||
+                            facturas.Usuario.Nombre.StartsWith(searchItem))
+                         select new
+                         {
+                             facturas.Id,
+                             facturas.Articulo.Descripcion,
+                             facturas.Comentario,
+                             facturas.Estado,
+                             facturas.Fecha_Venta,
+                             facturas.Monto_De_Articulo,
+                             facturas.Unidades_Vendidas,
+                             facturas.Usuario.Nombre
+                         };
 
             DgvFacturacion.DataSource = result.ToList();
+            DgvFacturacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void agregarBtn_Click(object sender, EventArgs e)
@@ -51,14 +67,19 @@ namespace Gestion_De_Cafeteria
 
         private void DgvFacturacion_DoubleClick(object sender, EventArgs e)
         {
-            var selectRow = DgvFacturacion.SelectedRows[0];
+            var selectedID = int.Parse(DgvFacturacion.SelectedRows[0].Cells[0].Value.ToString());
 
             var factura = entities.Facturacion_Articulos
-                                  .Where(x => x.Id == int.Parse(selectRow.Cells[0].Value.ToString()))
+                                  .Where(x => x.Id == selectedID)
                                   .FirstOrDefault();
             FacturacionDeArticulosEdForm factEd = new FacturacionDeArticulosEdForm(factura);
             factEd.Show();
 
+        }
+
+        private void FacturacionDeArticulosForm_Activated(object sender, EventArgs e)
+        {
+            ConsultarFacturacion();
         }
     }
 }
