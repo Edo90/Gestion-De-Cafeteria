@@ -176,7 +176,7 @@
             this.teamGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teamGroupBox.Location = new System.Drawing.Point(85, 114);
             this.teamGroupBox.Name = "teamGroupBox";
-            this.teamGroupBox.Size = new System.Drawing.Size(623, 246);
+            this.teamGroupBox.Size = new System.Drawing.Size(684, 261);
             this.teamGroupBox.TabIndex = 1;
             this.teamGroupBox.TabStop = false;
             this.teamGroupBox.Text = "Equipo";

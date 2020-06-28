@@ -21,13 +21,11 @@ namespace Gestion_De_Cafeteria
 
         private void FrmEdTipoUsuario_Load(object sender, EventArgs e)
         {
-            CmbEstado.SelectedIndex = 0;
-
             if (tipoUsuario != null)
             {
                 txtID.Text = tipoUsuario.ID.ToString();
                 txtDescripcion.Text = tipoUsuario.Descripcion;
-                CmbEstado.SelectedIndex = Int32.Parse(tipoUsuario.Estado);
+                CmbEstado.SelectedItem = tipoUsuario.Estado.Trim() == "0" ? "Inactivo" : "Activo";
             }
         }
 
@@ -37,7 +35,7 @@ namespace Gestion_De_Cafeteria
             {
                 Tipo_Usuario tipoUsu = entities.Tipo_Usuario.Find(Int32.Parse(txtID.Text));
                 tipoUsu.Descripcion = txtDescripcion.Text;
-                tipoUsu.Estado = Convert.ToString(CmbEstado.SelectedIndex);
+                tipoUsu.Estado = Convert.ToString(CmbEstado.SelectedItem.ToString() == "Activo" ? "1" : "0");
             }
             else
             {

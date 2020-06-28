@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmEdCafeteria : Form
     {
-        public Cafeteria cafeteria { get; set; }
+        public Cafeteria cafeteria;
         private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmEdCafeteria()
         {
@@ -54,27 +55,19 @@ namespace Gestion_De_Cafeteria
         }
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
-            if (txtID.Text != "")
-            {
-                Cafeteria cafeteria2 = entities.Cafeterias.Find(int.Parse(txtID.Text));
-                cafeteria2.Descripcion = txtDescripcion.Text;
-                cafeteria2.ID_Campus = Convert.ToInt32(CmbCampus.SelectedValue);
-                cafeteria2.Encargado = Convert.ToInt32(CmbEncargado.SelectedValue);
-                cafeteria2.Estado = Convert.ToString(CmbEstado.SelectedValue);
-            }
-            else
-            {
-                entities.Cafeterias.Add(new Cafeteria
-                {
-                    Descripcion = txtDescripcion.Text,
-                    ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
-                    Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
-                    Estado = CmbEstado.SelectedIndex.ToString()
-                });
-            }
 
+            cafeteria = new Cafeteria()
+            {
+                ID = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
+                Descripcion = txtDescripcion.Text,
+                ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
+                Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
+                Estado = CmbEstado.SelectedText.ToString() == "Activo" ? "1" : "0"
+            };
 
+            entities.Cafeterias.AddOrUpdate(cafeteria);
             entities.SaveChanges();
+
             MessageBox.Show("Datos guardados con exito");
             this.Close();
         }

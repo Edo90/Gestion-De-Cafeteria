@@ -21,7 +21,7 @@ namespace Gestion_De_Cafeteria
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            ConsultarUsuarios();
+            ConsultarPorCriterio();
         }
 
         private void CmdBuscar_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace Gestion_De_Cafeteria
 
         private void FrmUsuarios_Activated(object sender, EventArgs e)
         {
-            ConsultarUsuarios();
+            ConsultarPorCriterio();
         }
 
         private void DgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -56,11 +56,6 @@ namespace Gestion_De_Cafeteria
             fue.ShowDialog();
         }
 
-        private void ConsultarUsuarios()
-        {
-            DgvUsuarios.DataSource = entities.Usuarios.ToList();
-        }
-
         private void ConsultarPorCriterio()
         {
             var usuarios = from em in entities.Usuarios
@@ -72,8 +67,23 @@ namespace Gestion_De_Cafeteria
                             em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Estado.StartsWith(TxtDatoABuscar.Text)
                             )
-                              select em;
+                              select new 
+                              { 
+                                em.IdUsuario,
+                                em.Nombre,
+                                em.Cedula,
+                                em.TipoUsuario,
+                                em.LimiteCredito,
+                                em.FechaRegistro,
+                                em.Estado
+                              };
             DgvUsuarios.DataSource = usuarios.ToList();
+            DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
