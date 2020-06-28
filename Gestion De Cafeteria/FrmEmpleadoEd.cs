@@ -13,6 +13,7 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmEmpleadoEd : Form
     {
+        private const bool DEACTIVE = false;
         private Empleado empleado;
         private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmEmpleadoEd()
@@ -129,6 +130,27 @@ namespace Gestion_De_Cafeteria
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CmdEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Seguro de eliminar?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+            Empleado empleado = entities.Empleadoes.Find(Int32.Parse(txtID.Text));
+            if (empleado != null)
+            {
+                empleado.Estado = DEACTIVE;
+                entities.SaveChanges();
+                MessageBox.Show("Empleado eliminado con exito");
+            }
+            else
+            {
+                MessageBox.Show("Marca no existe");
+            }
+            this.Close();
         }
     }
 }

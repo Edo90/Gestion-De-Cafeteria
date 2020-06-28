@@ -132,6 +132,7 @@
             this.empleadoGridView.RowTemplate.Height = 24;
             this.empleadoGridView.Size = new System.Drawing.Size(731, 247);
             this.empleadoGridView.TabIndex = 5;
+            this.empleadoGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellContentClick);
             this.empleadoGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.empleadoGridView_CellDoubleClick);
             // 
             // FrmEmpleado

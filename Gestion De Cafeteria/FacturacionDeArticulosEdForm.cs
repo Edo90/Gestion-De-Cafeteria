@@ -23,6 +23,7 @@ namespace Gestion_De_Cafeteria
 
         public FacturacionDeArticulosEdForm(Facturacion_Articulos factura)
         {
+            InitializeComponent();
             this.factura = factura;
         }
 
