@@ -78,16 +78,16 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+            Proveedore proveedor = entities.Proveedores.Find(int.Parse(TxtIdProveedor.Text));
             if (proveedor != null)
             {
                 entities.Proveedores.Remove(proveedor);
                 entities.SaveChanges();
-                MessageBox.Show("Empleado eliminado con exito");
+                MessageBox.Show("Proveedor eliminado con exito");
             }
             else
             {
-                MessageBox.Show("Empleado no existe");
+                MessageBox.Show("Proveedor no existe");
             }
             this.Close();
         }

@@ -22,6 +22,7 @@ namespace Gestion_De_Cafeteria
 
         public ArticulosFormEd(Articulo articulo)
         {
+            InitializeComponent();
             this.articulo = articulo;
         }
 

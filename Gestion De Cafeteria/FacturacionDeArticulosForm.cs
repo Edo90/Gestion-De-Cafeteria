@@ -75,5 +75,10 @@ namespace Gestion_De_Cafeteria
             factEd.Show();
 
         }
+
+        private void FacturacionDeArticulosForm_Activated(object sender, EventArgs e)
+        {
+            ConsultarFacturacion();
+        }
     }
 }
