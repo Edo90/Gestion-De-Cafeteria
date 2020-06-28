@@ -56,6 +56,7 @@ namespace Gestion_De_Cafeteria
                          };
 
             DgvFacturacion.DataSource = result.ToList();
+            DgvFacturacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void agregarBtn_Click(object sender, EventArgs e)

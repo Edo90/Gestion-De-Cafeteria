@@ -69,6 +69,7 @@ namespace Gestion_De_Cafeteria
                             )
                               select new { em.IdProveedor, em.NombreComercial, em.RNC, em.FechaRegistro, em.Estado };
             DgvProveedores.DataSource = proveedores.ToList();
+            DgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

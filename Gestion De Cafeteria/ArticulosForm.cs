@@ -48,6 +48,7 @@ namespace Gestion_De_Cafeteria
                          };
             var test = result.ToList();
             DgvArticulos.DataSource = result.ToList();
+            DgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void agregarBtn_Click(object sender, EventArgs e)
