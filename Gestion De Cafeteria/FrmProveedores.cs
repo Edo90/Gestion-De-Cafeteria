@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmProveedores : Form
     {
-        public Proveedores proveedor { get; set; }
-        private Entities entities = new Entities();
+        public Proveedore proveedor { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmProveedores()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace Gestion_De_Cafeteria
 
         private void FrmProveedores_Load(object sender, EventArgs e)
         {
-            ConsultarProveedores();
+            ConsultarPorCriterio();
         }
 
         private void CmdBuscar_Click(object sender, EventArgs e)
@@ -37,26 +37,25 @@ namespace Gestion_De_Cafeteria
 
         private void FrmProveedores_Activated(object sender, EventArgs e)
         {
-            ConsultarProveedores();
+            ConsultarPorCriterio();
         }
 
         private void DgvProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.DgvProveedores.SelectedRows[0];
-            Proveedores proveedor = new Proveedores();
-            proveedor.IdProveedor = Int32.Parse(row.Cells[0].Value.ToString());
-            proveedor.NombreComercial = row.Cells[1].Value.ToString();
-            proveedor.RNC = row.Cells[2].Value.ToString();
-            proveedor.FechaRegistro = DateTime.Parse(row.Cells[3].Value.ToString());
-            proveedor.Estado = row.Cells[4].Value.ToString();
-            FrmProveedoresEd fpe = new FrmProveedoresEd();
-            fpe.proveedor = proveedor;
+            DataGridViewRow row = DgvProveedores.SelectedRows[0];
+            Proveedore proveedor = new Proveedore
+            {
+                IdProveedor = int.Parse(row.Cells[0].Value.ToString()),
+                NombreComercial = row.Cells[1].Value.ToString(),
+                RNC = row.Cells[2].Value.ToString(),
+                FechaRegistro = DateTime.Parse(row.Cells[3].Value.ToString()),
+                Estado = row.Cells[4].Value.ToString()
+            };
+            FrmProveedoresEd fpe = new FrmProveedoresEd
+            {
+                proveedor = proveedor
+            };
             fpe.ShowDialog();
-        }
-
-        private void ConsultarProveedores()
-        {
-            DgvProveedores.DataSource = entities.Proveedores.ToList();
         }
 
         private void ConsultarPorCriterio()
@@ -68,8 +67,9 @@ namespace Gestion_De_Cafeteria
                             em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Estado.ToString().StartsWith(TxtDatoABuscar.Text)
                             )
-                              select em;
+                              select new { em.IdProveedor, em.NombreComercial, em.RNC, em.FechaRegistro, em.Estado };
             DgvProveedores.DataSource = proveedores.ToList();
+            DgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

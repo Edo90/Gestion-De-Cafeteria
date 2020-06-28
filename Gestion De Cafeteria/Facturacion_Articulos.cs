@@ -12,15 +12,20 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Cafeteria
+    public partial class Facturacion_Articulos
     {
-        public int ID { get; set; }
-        public string Descripcion { get; set; }
-        public int ID_Campus { get; set; }
-        public int Encargado { get; set; }
-        public string Estado { get; set; }
+        public int Id { get; set; }
+        public int EmpleadoId { get; set; }
+        public int ArticuloId { get; set; }
+        public int UsuarioId { get; set; }
+        public System.DateTime Fecha_Venta { get; set; }
+        public Nullable<decimal> Monto_De_Articulo { get; set; }
+        public int Unidades_Vendidas { get; set; }
+        public string Comentario { get; set; }
+        public bool Estado { get; set; }
     
-        public virtual Campu Campu { get; set; }
+        public virtual Articulo Articulo { get; set; }
         public virtual Empleado Empleado { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

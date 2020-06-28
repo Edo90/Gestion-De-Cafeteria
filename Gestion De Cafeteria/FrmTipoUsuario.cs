@@ -13,7 +13,7 @@ namespace Gestion_De_Cafeteria
     public partial class FrmTipoUsuario : Form
     {
         public Tipo_Usuario tipoUsuario { get; set; }
-        private GCEntities entities = new GCEntities();
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmTipoUsuario()
         {
             InitializeComponent();
@@ -21,27 +21,28 @@ namespace Gestion_De_Cafeteria
 
         private void FrmTipoUsuario_Load(object sender, EventArgs e)
         {
-            ConsultarTipoUsuarios();
-        }
-
-        private void ConsultarTipoUsuarios()
-        {           
-            DgvTipoUsuario.DataSource = entities.Tipo_Usuario.ToList();
+            ConsultarPorCriterio();
         }
 
         private void CmdBuscar_Click(object sender, EventArgs e)
         {
-            consultarPorCriterio();
+            ConsultarPorCriterio();
         }
-        private void consultarPorCriterio()
+        private void ConsultarPorCriterio()
         {
             var campus = from tipoUsu in entities.Tipo_Usuario
                          where (tipoUsu.ID.ToString().StartsWith(txtBuscarPor.Text) ||
                          tipoUsu.Descripcion.StartsWith(txtBuscarPor.Text) ||
                          tipoUsu.Estado.StartsWith(txtBuscarPor.Text)
                          )
-                         select tipoUsu;
+                         select new 
+                         { 
+                            tipoUsu.ID,
+                            tipoUsu.Descripcion,
+                            tipoUsu.Estado
+                         };
             DgvTipoUsuario.DataSource = campus.ToList();
+            DgvTipoUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CmdAgregar_Click(object sender, EventArgs e)
@@ -52,18 +53,22 @@ namespace Gestion_De_Cafeteria
 
         private void FrmTipoUsuario_Activated(object sender, EventArgs e)
         {
-            ConsultarTipoUsuarios();
+            ConsultarPorCriterio();
         }
 
         private void DgvTipoUsuario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.DgvTipoUsuario.SelectedRows[0];
-            Tipo_Usuario tipoUsua = new Tipo_Usuario();
-            tipoUsua.ID = Int32.Parse(row.Cells[0].Value.ToString());
-            tipoUsua.Descripcion = row.Cells[1].Value.ToString();
-            tipoUsua.Estado = row.Cells[2].Value.ToString();
-            FrmEdTipoUsuario fed = new FrmEdTipoUsuario();
-            fed.tipoUsuario = tipoUsua;
+            DataGridViewRow row = DgvTipoUsuario.SelectedRows[0];
+            Tipo_Usuario tipoUsua = new Tipo_Usuario
+            {
+                ID = int.Parse(row.Cells[0].Value.ToString()),
+                Descripcion = row.Cells[1].Value.ToString(),
+                Estado = row.Cells[2].Value.ToString()
+            };
+            FrmEdTipoUsuario fed = new FrmEdTipoUsuario
+            {
+                tipoUsuario = tipoUsua
+            };
 
             fed.ShowDialog();
         }

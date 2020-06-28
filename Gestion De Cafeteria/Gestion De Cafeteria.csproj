@@ -55,17 +55,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cafeteria.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Articulo.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Campus.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="ArticulosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticulosForm.Designer.cs">
+      <DependentUpon>ArticulosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArticulosFormEd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArticulosFormEd.Designer.cs">
+      <DependentUpon>ArticulosFormEd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cafeteria.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Campu.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Estudiantes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="FacturacionDeArticulosEdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosEdForm.Designer.cs">
+      <DependentUpon>FacturacionDeArticulosEdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionDeArticulosForm.Designer.cs">
+      <DependentUpon>FacturacionDeArticulosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion_Articulos.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -103,32 +130,115 @@
     <Compile Include="FrmEdTipoUsuario.Designer.cs">
       <DependentUpon>FrmEdTipoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpleado.Designer.cs">
+      <DependentUpon>FrmEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleadoEd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpleadoEd.Designer.cs">
+      <DependentUpon>FrmEmpleadoEd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMarcas.Designer.cs">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMarcasEd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMarcasEd.Designer.cs">
+      <DependentUpon>FrmMarcasEd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProveedores.Designer.cs">
+      <DependentUpon>FrmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProveedoresEd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProveedoresEd.Designer.cs">
+      <DependentUpon>FrmProveedoresEd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTipoUsuario.Designer.cs">
       <DependentUpon>FrmTipoUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+    <Compile Include="FrmUsuarios.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="FrmUsuarios.Designer.cs">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="FrmUsuariosEd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsuariosEd.Designer.cs">
+      <DependentUpon>FrmUsuariosEd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCafeteriaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>GestionCafeteriaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCafeteriaEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCafeteriaEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCafeteriaEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCafeteriaEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Marca.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tipo_Usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Proveedore.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProveedoresProducto.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tipo_Usuario.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ArticulosForm.resx">
+      <DependentUpon>ArticulosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArticulosFormEd.resx">
+      <DependentUpon>ArticulosFormEd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionDeArticulosEdForm.resx">
+      <DependentUpon>FacturacionDeArticulosEdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionDeArticulosForm.resx">
+      <DependentUpon>FacturacionDeArticulosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCafeteria.resx">
       <DependentUpon>FrmCafeteria.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,8 +254,32 @@
     <EmbeddedResource Include="FrmEdTipoUsuario.resx">
       <DependentUpon>FrmEdTipoUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpleado.resx">
+      <DependentUpon>FrmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpleadoEd.resx">
+      <DependentUpon>FrmEmpleadoEd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMarcas.resx">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMarcasEd.resx">
+      <DependentUpon>FrmMarcasEd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProveedores.resx">
+      <DependentUpon>FrmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProveedoresEd.resx">
+      <DependentUpon>FrmProveedoresEd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoUsuario.resx">
       <DependentUpon>FrmTipoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsuarios.resx">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsuariosEd.resx">
+      <DependentUpon>FrmUsuariosEd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -157,12 +291,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="GestionCafeteriaEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>GestionCafeteriaEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="GestionCafeteriaDataSet.xsc">
+      <DependentUpon>GestionCafeteriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GestionCafeteriaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionCafeteriaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionCafeteriaDataSet.xss">
+      <DependentUpon>GestionCafeteriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GestionCafeteriaEntity.edmx.diagram">
+      <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -179,20 +324,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\agregar.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GestionCafeteriaEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
+      <LastGenOutput>GestionCafeteriaEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GestionCafeteriaEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
+      <LastGenOutput>GestionCafeteriaEntity.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

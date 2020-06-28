@@ -12,28 +12,24 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Empleado
+    public partial class Proveedore
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empleado()
+        public Proveedore()
         {
-            this.Cafeterias = new HashSet<Cafeteria>();
-            this.Facturacion_Articulos = new HashSet<Facturacion_Articulos>();
+            this.ProveedoresProductos = new HashSet<ProveedoresProducto>();
+            this.Articulos = new HashSet<Articulo>();
         }
     
-        public int IdEMpleado { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public decimal Salario { get; set; }
-        public string Cedula { get; set; }
-        public string Tanda_labor { get; set; }
-        public Nullable<int> Porciento_Comision { get; set; }
-        public System.DateTime Fecha_Ingreso { get; set; }
-        public bool Estado { get; set; }
+        public int IdProveedor { get; set; }
+        public string NombreComercial { get; set; }
+        public string RNC { get; set; }
+        public System.DateTime FechaRegistro { get; set; }
+        public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cafeteria> Cafeterias { get; set; }
+        public virtual ICollection<ProveedoresProducto> ProveedoresProductos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual ICollection<Articulo> Articulos { get; set; }
     }
 }

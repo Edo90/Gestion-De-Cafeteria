@@ -12,27 +12,24 @@ namespace Gestion_De_Cafeteria
     using System;
     using System.Collections.Generic;
     
-    public partial class Empleado
+    public partial class Articulo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empleado()
+        public Articulo()
         {
-            this.Cafeterias = new HashSet<Cafeteria>();
             this.Facturacion_Articulos = new HashSet<Facturacion_Articulos>();
         }
     
-        public int IdEMpleado { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public decimal Salario { get; set; }
-        public string Cedula { get; set; }
-        public string Tanda_labor { get; set; }
-        public Nullable<int> Porciento_Comision { get; set; }
-        public System.DateTime Fecha_Ingreso { get; set; }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public int MarcaId { get; set; }
+        public Nullable<decimal> Costo { get; set; }
+        public int ProveedorId { get; set; }
+        public bool Existencia { get; set; }
         public bool Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cafeteria> Cafeterias { get; set; }
+        public virtual Marca Marca { get; set; }
+        public virtual Proveedore Proveedore { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
     }

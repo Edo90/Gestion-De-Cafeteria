@@ -13,8 +13,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmProveedoresEd : Form
     {
-        public Proveedores proveedor { get; set; }
-        private Entities entities = new Entities();
+        public Proveedore proveedor { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmProveedoresEd()
         {
             InitializeComponent();
@@ -42,18 +42,18 @@ namespace Gestion_De_Cafeteria
             {
                 if (TxtIdProveedor.Text != "")
                 {
-                    Proveedores proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+                    Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
                     proveedor.NombreComercial = TxtNombreComercial.Text;
                     proveedor.RNC = TxtRNC.Text;
                     proveedor.FechaRegistro = DtpFechaRegistro.Value;
                     proveedor.Estado = CbxEstado.Text;
-                    entities.Entry<Proveedores>(proveedor).State = EntityState.Modified;
+                    entities.Entry<Proveedore>(proveedor).State = EntityState.Modified;
                     entities.SaveChanges();
-                    entities.Entry<Proveedores>(proveedor).Reload();
+                    entities.Entry<Proveedore>(proveedor).Reload();
                 }
                 else
                 {
-                    entities.Proveedores.Add(new Proveedores
+                    entities.Proveedores.Add(new Proveedore
                     {
                         NombreComercial = TxtNombreComercial.Text,
                         RNC = TxtRNC.Text,
@@ -78,16 +78,16 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Proveedores proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+            Proveedore proveedor = entities.Proveedores.Find(int.Parse(TxtIdProveedor.Text));
             if (proveedor != null)
             {
                 entities.Proveedores.Remove(proveedor);
                 entities.SaveChanges();
-                MessageBox.Show("Empleado eliminado con exito");
+                MessageBox.Show("Proveedor eliminado con exito");
             }
             else
             {
-                MessageBox.Show("Empleado no existe");
+                MessageBox.Show("Proveedor no existe");
             }
             this.Close();
         }

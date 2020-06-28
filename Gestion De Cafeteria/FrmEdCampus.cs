@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,10 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmEdCampus : Form
     {
-        public Campus campus { get; set; }
-        private GCEntities entities = new GCEntities();
+        private const int INACTIVE = 1;
+        private const int ACTIVE = 0;
+        public Campu campus;
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmEdCampus()
         {
@@ -22,35 +25,29 @@ namespace Gestion_De_Cafeteria
 
         private void FrmEdCampus_Load(object sender, EventArgs e)
         {
-           CmbEstado.SelectedIndex = 0;
-
             if (campus != null)
             {
                 txtID.Text = campus.ID.ToString();
                 txtDescripcion.Text = campus.Descripcion;
-                CmbEstado.SelectedIndex = Int32.Parse(campus.Estado);
+                CmbEstado.SelectedIndex = campus.Estado.Trim() == "0" ? INACTIVE : ACTIVE;
             }
             
         }
 
         private void CmdGuardar_Click(object sender, EventArgs e)
         {
-            if (txtID.Text != "")
-            {
-                Campus campus2 = entities.Campus.Find(Int32.Parse(txtID.Text));
-                campus2.Descripcion = txtDescripcion.Text;
-                campus2.Estado = Convert.ToString(CmbEstado.SelectedIndex);
-            }
-            else
-            {
-                entities.Campus.Add(new Campus
-                {
-                    Descripcion = txtDescripcion.Text,                    
-                    Estado = CmbEstado.SelectedIndex.ToString()
-                });
-            }
 
+            campus = new Campu()
+            {
+                ID = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
+                Descripcion = txtDescripcion.Text,
+                Estado = CmbEstado.SelectedItem.ToString() == "Activo" ? "1" : "0"
+            };
+
+
+            entities.Campus.AddOrUpdate(campus);
             entities.SaveChanges();
+
             MessageBox.Show("Datos guardados con exito");
             this.Close();
         }
@@ -62,10 +59,10 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Campus campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
+            Campu campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
             if (campus3 != null)
             {
-                entities.Campus.Remove(campus3);
+                campus3.Estado = "0";
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmEdCafeteria : Form
     {
-        public Cafeteria cafeteria { get; set; }
-        private GCEntities entities = new GCEntities();
+        public Cafeteria cafeteria;
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmEdCafeteria()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace Gestion_De_Cafeteria
                 CmbEncargado.SelectedValue = cafeteria.Encargado;
                 CmbEstado.SelectedIndex = Int32.Parse(cafeteria.Estado);
             }
-            
+
         }
         public void llenarCombox()
         {
@@ -43,7 +44,7 @@ namespace Gestion_De_Cafeteria
                 CmbCampus.ValueMember = "ID";
             }
 
-            var encargado = entities.Empleado.ToList();
+            var encargado = entities.Empleadoes.ToList();
             if (encargado.Count > 0)
             {
                 CmbEncargado.DataSource = encargado;
@@ -53,28 +54,20 @@ namespace Gestion_De_Cafeteria
 
         }
         private void CmdGuardar_Click(object sender, EventArgs e)
-        {           
-            if (txtID.Text != "")
-            {
-                Cafeteria cafeteria2 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
-                cafeteria2.Descripcion = txtDescripcion.Text;
-                cafeteria2.ID_Campus = Convert.ToInt32(CmbCampus.SelectedValue);
-                cafeteria2.Encargado = Convert.ToInt32(CmbEncargado.SelectedValue);
-                cafeteria2.Estado = Convert.ToString(CmbEstado.SelectedValue);
-            }
-            else
-            {
-                entities.Cafeteria.Add(new Cafeteria
-                {                    
-                    Descripcion = txtDescripcion.Text,
-                    ID_Campus = Int32.Parse(CmbCampus.SelectedValue.ToString()),
-                    Encargado = Int32.Parse(CmbEncargado.SelectedValue.ToString()),
-                    Estado = CmbEstado.SelectedIndex.ToString()
-                });
-            }
+        {
 
+            cafeteria = new Cafeteria()
+            {
+                ID = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
+                Descripcion = txtDescripcion.Text,
+                ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
+                Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
+                Estado = CmbEstado.SelectedText.ToString() == "Activo" ? "1" : "0"
+            };
 
+            entities.Cafeterias.AddOrUpdate(cafeteria);
             entities.SaveChanges();
+
             MessageBox.Show("Datos guardados con exito");
             this.Close();
         }
@@ -86,16 +79,17 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Cafeteria cafeteria3 = entities.Cafeteria.Find(Int32.Parse(txtID.Text));
+            Cafeteria cafeteria3 = entities.Cafeterias.Find(Int32.Parse(txtID.Text));
             if (cafeteria3 != null)
             {
-                entities.Cafeteria.Remove(cafeteria3);
+                entities.Cafeterias.Remove(cafeteria3);
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }
-            else { 
+            else
+            {
                 MessageBox.Show("La cafeteria no existe");
-        }
+            }
             this.Close();
         }
     }

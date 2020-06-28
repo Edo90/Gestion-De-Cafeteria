@@ -13,8 +13,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmUsuariosEd : Form
     {
-        public Usuarios usuario { get; set; }
-        private Entities entities = new Entities();
+        public Usuario usuario { get; set; }
+        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmUsuariosEd()
         {
             InitializeComponent();
@@ -48,23 +48,23 @@ namespace Gestion_De_Cafeteria
             {
                 if (TxtIdUsuario.Text != "")
                 {
-                    Usuarios usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
+                    Usuario usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
                     usuario.Nombre = TxtNombre.Text;
                     usuario.Cedula = Int32.Parse(TxtCedula.Text);
                     usuario.TipoUsuario = CbxTipoUsuario.Text;
                     usuario.LimiteCredito = decimal.Parse(TxtLimiteCredito.Text);
                     usuario.FechaRegistro = DtpFechaRegistro.Value;
                     usuario.Estado = CbxEstado.Text;
-                    entities.Entry<Usuarios>(usuario).State = EntityState.Modified;
+                    entities.Entry(usuario).State = EntityState.Modified;
                     entities.SaveChanges();
-                    entities.Entry<Usuarios>(usuario).Reload();
+                    entities.Entry(usuario).Reload();
                 }
                 else
                 {
-                    entities.Usuarios.Add(new Usuarios
+                    entities.Usuarios.Add(new Usuario
                     {
                         Nombre = TxtNombre.Text,
-                        Cedula = Int32.Parse(TxtCedula.Text),
+                        Cedula = int.Parse(TxtCedula.Text),
                         TipoUsuario = CbxTipoUsuario.Text,
                         LimiteCredito = decimal.Parse(TxtLimiteCredito.Text),
                         FechaRegistro = DtpFechaRegistro.Value,
@@ -88,7 +88,7 @@ namespace Gestion_De_Cafeteria
                 return;
             }
 
-            Usuarios usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
+            Usuario usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
             if (usuario != null)
             {
                 entities.Usuarios.Remove(usuario);
