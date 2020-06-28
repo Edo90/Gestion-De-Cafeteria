@@ -45,10 +45,11 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DgvUsuarios);
             this.panel2.Location = new System.Drawing.Point(16, 114);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(991, 311);
             this.panel2.TabIndex = 3;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // DgvUsuarios
             // 
@@ -56,7 +57,7 @@
             this.DgvUsuarios.AllowUserToDeleteRows = false;
             this.DgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvUsuarios.Location = new System.Drawing.Point(4, 4);
-            this.DgvUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgvUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.DgvUsuarios.Name = "DgvUsuarios";
             this.DgvUsuarios.ReadOnly = true;
             this.DgvUsuarios.RowHeadersWidth = 51;
@@ -73,7 +74,7 @@
             this.panel1.Controls.Add(this.TxtDatoABuscar);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(991, 81);
             this.panel1.TabIndex = 2;
@@ -81,7 +82,7 @@
             // CmdAgregar
             // 
             this.CmdAgregar.Location = new System.Drawing.Point(864, 4);
-            this.CmdAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdAgregar.Name = "CmdAgregar";
             this.CmdAgregar.Size = new System.Drawing.Size(92, 73);
             this.CmdAgregar.TabIndex = 3;
@@ -92,7 +93,7 @@
             // CmdBuscar
             // 
             this.CmdBuscar.Location = new System.Drawing.Point(711, 4);
-            this.CmdBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdBuscar.Name = "CmdBuscar";
             this.CmdBuscar.Size = new System.Drawing.Size(92, 73);
             this.CmdBuscar.TabIndex = 2;
@@ -103,7 +104,7 @@
             // TxtDatoABuscar
             // 
             this.TxtDatoABuscar.Location = new System.Drawing.Point(192, 28);
-            this.TxtDatoABuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtDatoABuscar.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDatoABuscar.Name = "TxtDatoABuscar";
             this.TxtDatoABuscar.Size = new System.Drawing.Size(479, 22);
             this.TxtDatoABuscar.TabIndex = 1;
@@ -125,9 +126,9 @@
             this.ClientSize = new System.Drawing.Size(1025, 442);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmUsuarios";
-            this.Text = "FrmUsuarios";
+            this.Text = "Usuarios";
             this.Activated += new System.EventHandler(this.FrmUsuarios_Activated);
             this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             this.panel2.ResumeLayout(false);

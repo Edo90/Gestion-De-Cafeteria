@@ -30,11 +30,11 @@ namespace Gestion_De_Cafeteria
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Proveedore> Proveedores { get; set; }
         public virtual DbSet<Tipo_Usuario> Tipo_Usuario { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Empleado> Empleadoes { get; set; }
         public virtual DbSet<Producto> Productoes { get; set; }
         public virtual DbSet<ProveedoresProducto> ProveedoresProductos { get; set; }
         public virtual DbSet<Articulo> Articulos { get; set; }
         public virtual DbSet<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

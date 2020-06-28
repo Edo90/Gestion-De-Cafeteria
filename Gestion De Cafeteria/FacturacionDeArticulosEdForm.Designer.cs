@@ -284,7 +284,7 @@
             this.Controls.Add(this.guardarBtn);
             this.Controls.Add(this.groupBox1);
             this.Name = "FacturacionDeArticulosEdForm";
-            this.Text = "FacturacionDeArticulosEdForm";
+            this.Text = "Edicion Facturacion de Articulos";
             this.Load += new System.EventHandler(this.FacturacionDeArticulosEdForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
