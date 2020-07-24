@@ -36,7 +36,7 @@ namespace Gestion_De_Cafeteria
         }
         public void llenarCombox()
         {
-            var campus = entities.Campus.ToList();
+            var campus = entities.Campus.Where(x =>x.Estado == "1").ToList();
             if (campus.Count > 0)
             {
                 CmbCampus.DataSource = campus;
@@ -44,7 +44,7 @@ namespace Gestion_De_Cafeteria
                 CmbCampus.ValueMember = "ID";
             }
 
-            var encargado = entities.Empleadoes.ToList();
+            var encargado = entities.Empleadoes.Where(x => x.Estado == true).ToList();
             if (encargado.Count > 0)
             {
                 CmbEncargado.DataSource = encargado;

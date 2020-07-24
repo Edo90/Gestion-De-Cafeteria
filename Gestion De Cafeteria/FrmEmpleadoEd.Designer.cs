@@ -50,6 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.comisionTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).BeginInit();
             this.SuspendLayout();
@@ -270,6 +271,16 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "ID";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(171, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(473, 599);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Empleado";
+            // 
             // FrmEmpleadoEd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -297,8 +308,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CmdEliminar);
             this.Controls.Add(this.CmdGuardar);
+            this.Controls.Add(this.groupBox1);
             this.Name = "FrmEmpleadoEd";
-            this.Text = "FrmEmpleadoEd";
+            this.Text = "Edicion de Empleado";
             this.Load += new System.EventHandler(this.FrmEmpleadoEd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.comisionTB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericTB)).EndInit();
@@ -331,5 +343,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

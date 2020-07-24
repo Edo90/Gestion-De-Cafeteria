@@ -113,10 +113,10 @@
           <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cedula" Type="int" Nullable="false" />
-          <Property Name="TipoUsuario" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="LimiteCredito" Type="numeric" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="date" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="13" />
         </EntityType>
         <Association Name="FK__Articulos__Marca__4E88ABD4">
           <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
@@ -329,19 +329,6 @@
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cedula" Type="Int32" Nullable="false" />
-          <Property Name="TipoUsuario" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LimiteCredito" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" FromRole="Usuario" ToRole="Facturacion_Articulos" />
-        </EntityType>
         <Association Name="FK__Cafeteria__ID_Ca__2F10007B">
           <End Role="Campus" Type="Self.Campu" Multiplicity="1" />
           <End Role="Cafeteria" Type="Self.Cafeteria" Multiplicity="*" />
@@ -360,7 +347,6 @@
           <EntitySet Name="Marcas" EntityType="Self.Marca" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK__Cafeteria__ID_Ca__2F10007B" Association="Self.FK__Cafeteria__ID_Ca__2F10007B">
             <End Role="Campus" EntitySet="Campus" />
             <End Role="Cafeteria" EntitySet="Cafeterias" />
@@ -398,11 +384,12 @@
             <End Role="Empleado" EntitySet="Empleadoes" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="GestionCafeteriaModel.Usuario" />
           <AssociationSet Name="FK__Facturaci__Usuar__5441852A" Association="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Empleado">
           <Key>
             <PropertyRef Name="IdEMpleado" />
@@ -555,6 +542,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="LimiteCredito" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TipoUsuario" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" FromRole="Usuario" ToRole="Facturacion_Articulos" />
+        </EntityType>
         <Association Name="FK__Facturaci__Usuar__5441852A">
           <End Type="GestionCafeteriaModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="GestionCafeteriaModel.Facturacion_Articulos" Role="Facturacion_Articulos" Multiplicity="*" />
@@ -567,7 +567,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -618,19 +618,6 @@
               <MappingFragment StoreEntitySet="Tipo_Usuario">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="GestionCafeteriaModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
-                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -694,6 +681,19 @@
                 <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
                 <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="GestionCafeteriaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

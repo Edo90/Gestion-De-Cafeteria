@@ -113,7 +113,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FacturacionDeArticulosForm";
-            this.Text = "FacturacionDeArticulosForm";
+            this.Text = "Facturacion de Articulos";
             this.Activated += new System.EventHandler(this.FacturacionDeArticulosForm_Activated);
             this.Load += new System.EventHandler(this.FacturacionDeArticulosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvFacturacion)).EndInit();

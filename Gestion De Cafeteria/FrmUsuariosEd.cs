@@ -15,6 +15,8 @@ namespace Gestion_De_Cafeteria
     {
         public Usuario usuario { get; set; }
         private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+
+        ValidacionCedula vc = new ValidacionCedula();
         public FrmUsuariosEd()
         {
             InitializeComponent();
@@ -22,17 +24,14 @@ namespace Gestion_De_Cafeteria
 
         private void FrmUsuariosEd_Load(object sender, EventArgs e)
         {
-            CbxTipoUsuario.SelectedIndex = 0;
+            CbxTipoUsuario.Items.AddRange(entities.Tipo_Usuario.Select(x => x.Descripcion).ToArray());
             CbxEstado.SelectedIndex = 0;
             if (usuario != null)
             {
                 TxtIdUsuario.Text = usuario.IdUsuario.ToString();
                 TxtNombre.Text = usuario.Nombre;
                 TxtCedula.Text = usuario.Cedula.ToString();
-                if (usuario.TipoUsuario == "Miembro")
-                {
-                    CbxTipoUsuario.SelectedIndex = 1;
-                }
+                CbxTipoUsuario.SelectedItem = usuario.TipoUsuario;
                 TxtLimiteCredito.Text = usuario.LimiteCredito.ToString();
                 DtpFechaRegistro.Value = usuario.FechaRegistro;
                 if (usuario.Estado == "Inactivo")
@@ -48,16 +47,23 @@ namespace Gestion_De_Cafeteria
             {
                 if (TxtIdUsuario.Text != "")
                 {
-                    Usuario usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
-                    usuario.Nombre = TxtNombre.Text;
-                    usuario.Cedula = Int32.Parse(TxtCedula.Text);
-                    usuario.TipoUsuario = CbxTipoUsuario.Text;
-                    usuario.LimiteCredito = decimal.Parse(TxtLimiteCredito.Text);
-                    usuario.FechaRegistro = DtpFechaRegistro.Value;
-                    usuario.Estado = CbxEstado.Text;
-                    entities.Entry(usuario).State = EntityState.Modified;
-                    entities.SaveChanges();
-                    entities.Entry(usuario).Reload();
+                    if (!vc.validaCedula(TxtCedula.Text))
+                    {
+                        MessageBox.Show("Cedula incorrecta");
+                    }
+                    else
+                    {
+                        Usuario usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
+                        usuario.Nombre = TxtNombre.Text;
+                        usuario.Cedula = Int32.Parse(TxtCedula.Text);
+                        usuario.TipoUsuario = CbxTipoUsuario.Text;
+                        usuario.LimiteCredito = decimal.Parse(TxtLimiteCredito.Text);
+                        usuario.FechaRegistro = DtpFechaRegistro.Value;
+                        usuario.Estado = CbxEstado.Text;
+                        entities.Entry(usuario).State = EntityState.Modified;
+                        entities.SaveChanges();
+                        entities.Entry(usuario).Reload();
+                    }
                 }
                 else
                 {
