@@ -16,6 +16,8 @@ namespace Gestion_De_Cafeteria
         private const bool DEACTIVE = false;
         private Empleado empleado;
         private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+
+        ValidacionCedula vc = new ValidacionCedula();
         public FrmEmpleadoEd()
         {
             InitializeComponent();
@@ -52,19 +54,27 @@ namespace Gestion_De_Cafeteria
         {
             if (!FieldsAreValid())
                 return;
-            empleado = new Empleado()
+            if (!vc.validaCedula(cedulaTB.Text))
             {
-                IdEMpleado = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
-                Nombre = $"{txtNombre.Text.ToUpperInvariant()} {txtApellido.Text.ToUpperInvariant()}",
-                Direccion = txtDireccion.Text,
-                Salario = salaryNumericTB.Value,
-                Cedula = cedulaTB.Text,
-                Tanda_labor = tandaComboBox.SelectedItem.ToString(),
-                Fecha_Ingreso = string.IsNullOrEmpty(txtID.Text) ? DateTime.Now : DateTime.Parse(fechaIngresoTB.Text),
-                Estado = estadoComboBox.SelectedItem.ToString() == "Activo",
-                Porciento_Comision = int.Parse(comisionTB.Value.ToString())
-            };
+                MessageBox.Show("Cedula incorrecta");
+            }
+            else
+            {
 
+
+                empleado = new Empleado()
+                {
+                    IdEMpleado = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
+                    Nombre = $"{txtNombre.Text.ToUpperInvariant()} {txtApellido.Text.ToUpperInvariant()}",
+                    Direccion = txtDireccion.Text,
+                    Salario = salaryNumericTB.Value,
+                    Cedula = cedulaTB.Text,
+                    Tanda_labor = tandaComboBox.SelectedItem.ToString(),
+                    Fecha_Ingreso = string.IsNullOrEmpty(txtID.Text) ? DateTime.Now : DateTime.Parse(fechaIngresoTB.Text),
+                    Estado = estadoComboBox.SelectedItem.ToString() == "Activo",
+                    Porciento_Comision = int.Parse(comisionTB.Value.ToString())
+                };
+            }
             if (empleado != null)
                 entities.Empleadoes.AddOrUpdate(empleado);
 

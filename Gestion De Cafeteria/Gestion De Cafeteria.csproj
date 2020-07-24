@@ -224,6 +224,7 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValidacionCedula.cs" />
     <EmbeddedResource Include="ArticulosForm.resx">
       <DependentUpon>ArticulosForm.cs</DependentUpon>
     </EmbeddedResource>
