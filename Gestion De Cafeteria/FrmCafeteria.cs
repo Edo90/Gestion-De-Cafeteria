@@ -21,8 +21,11 @@ namespace Gestion_De_Cafeteria
         }
 
         private void FrmCafeteria_Load(object sender, EventArgs e)
-        {            
+        {
+            
+            
             ConsultarCafeteria();
+            
         }
 
         private void ConsultarCafeteria()
@@ -42,8 +45,11 @@ namespace Gestion_De_Cafeteria
                                             caf.Estado
                                         }).ToList();
 
-            DgvCafeteria.DataSource = listadoCafeterias.ToList();              
-                       
+            DgvCafeteria.DataSource = listadoCafeterias.ToList();
+
+            DgvCafeteria.Columns[2].Visible = false;
+            DgvCafeteria.Columns[4].Visible = false;
+
         }
 
         private void CmdBuscar_Click_1(object sender, EventArgs e)
