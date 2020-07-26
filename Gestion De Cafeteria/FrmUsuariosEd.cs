@@ -25,11 +25,6 @@ namespace Gestion_De_Cafeteria
         {
             // TODO: esta línea de código carga datos en la tabla 'gestionCafeteriaDataSet1.Tipo_Usuario' Puede moverla o quitarla según sea necesario.
             this.tipo_UsuarioTableAdapter.Fill(this.gestionCafeteriaDataSet1.Tipo_Usuario);
-            //CbxTipoUsuario.Items.Clear();
-            //var usu = from usus in entities.Tipo_Usuario select new { usus.Descripcion };
-            //CbxTipoUsuario.Items.Add(usu);
-            CbxTipoUsuario.SelectedIndex = 0;
-            CbxEstado.SelectedIndex = 0;
             if (usuario != null)
             {
                 TxtIdUsuario.Text = usuario.IdUsuario.ToString();
@@ -37,17 +32,11 @@ namespace Gestion_De_Cafeteria
                 txtClave.Text = usuario.Clave;
                 txtClave.PasswordChar = '*';
                 txtClave.Enabled = false;
-                TxtCedula.Text = usuario.Cedula.ToString();
-                if (usuario.TipoUsuario == "Usuario")
-                {
-                    CbxTipoUsuario.SelectedIndex = 1;
-                }
+                TxtCedula.Text = usuario.Cedula;
+                CbxTipoUsuario.SelectedIndex = CbxTipoUsuario.FindStringExact(usuario.TipoUsuario);
                 TxtLimiteCredito.Text = usuario.LimiteCredito.ToString();
                 DtpFechaRegistro.Value = usuario.FechaRegistro;
-                if (usuario.Estado == "Inactivo")
-                {
-                    CbxEstado.SelectedIndex = 1;
-                }
+                CbxEstado.SelectedIndex = CbxEstado.FindStringExact(usuario.Estado);
             }
         }
 
