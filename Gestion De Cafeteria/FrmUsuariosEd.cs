@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Security.Cryptography;
 
 namespace Gestion_De_Cafeteria
 {
@@ -30,6 +31,8 @@ namespace Gestion_De_Cafeteria
             CbxTipoUsuario.DisplayMember = "Descripcion";
             CbxTipoUsuario.ValueMember = "ID";
 
+            TxtLimiteCredito.Maximum = int.MaxValue;
+
             CbxEstado.SelectedIndex = 0;
             if (Usuario != null)
             {
@@ -37,12 +40,13 @@ namespace Gestion_De_Cafeteria
                 TxtNombre.Text = Usuario.Nombre;
                 TxtCedula.Text = Usuario.Cedula.ToString();
                 CbxTipoUsuario.SelectedItem = Usuario.TipoUsuario;
-                TxtLimiteCredito.Text = Usuario.LimiteCredito.ToString();
+                TxtLimiteCredito.Value = (decimal)Usuario.LimiteCredito;
                 DtpFechaRegistro.Value = Usuario.FechaRegistro;
                 if (!Usuario.Estado)
                 {
                     CbxEstado.SelectedIndex = 1;
                 }
+                txtClave.Text = Usuario.Clave;
             }
         }
 
@@ -64,6 +68,7 @@ namespace Gestion_De_Cafeteria
                     usuario.LimiteCredito = decimal.Parse(TxtLimiteCredito.Text);
                     usuario.FechaRegistro = DtpFechaRegistro.Value;
                     usuario.Estado = CbxEstado.Text == "";
+                    usuario.Clave = GetMD5Hash(txtClave.Text);
                     entities.Entry(usuario).State = EntityState.Modified;
                     entities.SaveChanges();
                     entities.Entry(usuario).Reload();
@@ -74,6 +79,7 @@ namespace Gestion_De_Cafeteria
                     {
                         Nombre = TxtNombre.Text,
                         Cedula = TxtCedula.Text,
+                        Clave = GetMD5Hash(txtClave.Text),
                         TipoUsuario = (int)CbxTipoUsuario.SelectedValue,
                         LimiteCredito = decimal.Parse(TxtLimiteCredito.Text),
                         FechaRegistro = DtpFechaRegistro.Value,
@@ -117,5 +123,22 @@ namespace Gestion_De_Cafeteria
             }
             this.Close();
         }
+
+        public string GetMD5Hash(string input)
+        {
+            // step 1, calculate MD5 hash from input
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            // step 2, convert byte array to hex string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
+        }
+
     }
 }

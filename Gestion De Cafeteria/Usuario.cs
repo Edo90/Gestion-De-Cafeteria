@@ -27,6 +27,7 @@ namespace Gestion_De_Cafeteria
         public System.DateTime FechaRegistro { get; set; }
         public bool Estado { get; set; }
         public int TipoUsuario { get; set; }
+        public string Clave { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }

@@ -43,14 +43,17 @@ namespace Gestion_De_Cafeteria
         private void DgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvUsuarios.SelectedRows[0];
-            Usuario usuario = new Usuario();
-            usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
-            usuario.Nombre = row.Cells[1].Value.ToString();
-            usuario.Cedula = row.Cells[2].Value.ToString();
-            usuario.TipoUsuario = (int)row.Cells[7].Value;
-            usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
-            usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
-            usuario.Estado = (bool)row.Cells[6].Value;
+            Usuario usuario = new Usuario
+            {
+                IdUsuario = Int32.Parse(row.Cells[0].Value.ToString()),
+                Nombre = row.Cells[1].Value.ToString(),
+                Clave = row.Cells[2].Value.ToString(),
+                Cedula = row.Cells[3].Value.ToString(),
+                TipoUsuario = (int)row.Cells[8].Value,
+                LimiteCredito = decimal.Parse(row.Cells[5].Value.ToString()),
+                FechaRegistro = DateTime.Parse(row.Cells[6].Value.ToString()),
+                Estado = (bool)row.Cells[7].Value
+            };
 
             FrmUsuariosEd fue = new FrmUsuariosEd
             {
@@ -74,6 +77,7 @@ namespace Gestion_De_Cafeteria
                               { 
                                 em.IdUsuario,
                                 em.Nombre,
+                                Clave = "*******",
                                 em.Cedula,
                                 tipo.Descripcion,
                                 em.LimiteCredito,
@@ -83,7 +87,8 @@ namespace Gestion_De_Cafeteria
                               };
             DgvUsuarios.DataSource = usuarios.ToList();
             DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvUsuarios.Columns[7].Visible = false;
+            DgvUsuarios.Columns[8].Visible = false;
+            
 
         }
 
