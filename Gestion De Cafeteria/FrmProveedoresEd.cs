@@ -15,6 +15,8 @@ namespace Gestion_De_Cafeteria
     {
         public Proveedore proveedor { get; set; }
         private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+
+        ValidacionCedula vc = new ValidacionCedula();
         public FrmProveedoresEd()
         {
             InitializeComponent();
@@ -42,14 +44,22 @@ namespace Gestion_De_Cafeteria
             {
                 if (TxtIdProveedor.Text != "")
                 {
-                    Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
-                    proveedor.NombreComercial = TxtNombreComercial.Text;
-                    proveedor.RNC = TxtRNC.Text;
-                    proveedor.FechaRegistro = DtpFechaRegistro.Value;
-                    proveedor.Estado = CbxEstado.Text;
-                    entities.Entry<Proveedore>(proveedor).State = EntityState.Modified;
-                    entities.SaveChanges();
-                    entities.Entry<Proveedore>(proveedor).Reload();
+                    if (!vc.esUnRNCValido(TxtRNC.Text))
+                    {
+                        MessageBox.Show("RNC incorrecto");
+                    }
+                    else
+                    {
+                        Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+                        proveedor.NombreComercial = TxtNombreComercial.Text;
+                        proveedor.RNC = TxtRNC.Text;
+                        proveedor.FechaRegistro = DtpFechaRegistro.Value;
+                        proveedor.Estado = CbxEstado.Text;
+                        entities.Entry<Proveedore>(proveedor).State = EntityState.Modified;
+                        entities.SaveChanges();
+                        entities.Entry<Proveedore>(proveedor).Reload();
+                    }
+                    
                 }
                 else
                 {
