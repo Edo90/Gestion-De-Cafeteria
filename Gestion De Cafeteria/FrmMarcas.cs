@@ -66,7 +66,9 @@ namespace Gestion_De_Cafeteria
                             em.Estado
                          };
             DgvMarcas.DataSource = marcas.ToList();
-            
+            DgvMarcas.Columns[0].Visible = false;
+            DgvMarcas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
     }
 }

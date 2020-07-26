@@ -38,36 +38,43 @@ namespace Gestion_De_Cafeteria
 
         private void CmdGuadar_Click(object sender, EventArgs e)
         {
-            try
+            if (esUnRNCValido(TxtRNC.Text))
             {
-                if (TxtIdProveedor.Text != "")
+                try
                 {
-                    Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
-                    proveedor.NombreComercial = TxtNombreComercial.Text;
-                    proveedor.RNC = TxtRNC.Text;
-                    proveedor.FechaRegistro = DtpFechaRegistro.Value;
-                    proveedor.Estado = CbxEstado.Text;
-                    entities.Entry<Proveedore>(proveedor).State = EntityState.Modified;
-                    entities.SaveChanges();
-                    entities.Entry<Proveedore>(proveedor).Reload();
-                }
-                else
-                {
-                    entities.Proveedores.Add(new Proveedore
+                    if (TxtIdProveedor.Text != "")
                     {
-                        NombreComercial = TxtNombreComercial.Text,
-                        RNC = TxtRNC.Text,
-                        FechaRegistro = DtpFechaRegistro.Value,
-                        Estado = CbxEstado.Text
-                    });
-                    entities.SaveChanges();
+                        Proveedore proveedor = entities.Proveedores.Find(Int32.Parse(TxtIdProveedor.Text));
+                        proveedor.NombreComercial = TxtNombreComercial.Text;
+                        proveedor.RNC = TxtRNC.Text;
+                        proveedor.FechaRegistro = DtpFechaRegistro.Value;
+                        proveedor.Estado = CbxEstado.Text;
+                        entities.Entry(proveedor).State = EntityState.Modified;
+                        entities.SaveChanges();
+                        entities.Entry(proveedor).Reload();
+                    }
+                    else
+                    {
+                        entities.Proveedores.Add(new Proveedore
+                        {
+                            NombreComercial = TxtNombreComercial.Text,
+                            RNC = TxtRNC.Text,
+                            FechaRegistro = DtpFechaRegistro.Value,
+                            Estado = CbxEstado.Text
+                        });
+                        entities.SaveChanges();
+                    }
+                    MessageBox.Show("Datos guardados con exito");
+                    this.Close();
                 }
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Un campo de los ingresados es invalido " + ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Un campo de los ingresados es invalido " + ex.Message);
+                MessageBox.Show("El RNC intoducido es invalido");
             }
         }
 
@@ -90,6 +97,26 @@ namespace Gestion_De_Cafeteria
                 MessageBox.Show("Proveedor no existe");
             }
             this.Close();
+        }
+        private bool esUnRNCValido(string pRNC)
+        {
+            int vnTotal = 0;
+            int[] digitoMult = new int[8] { 7, 9, 8, 6, 5, 4, 3, 2 };
+            string vcRNC = pRNC.Replace("-", "").Replace(" ", "");
+            string vDigito = vcRNC.Substring(8, 1);
+            if (vcRNC.Length.Equals(9))
+                if (!"145".Contains(vcRNC.Substring(0, 1)))
+                    return false;
+            for (int vDig = 1; vDig <= 8; vDig++)
+            {
+                int vCalculo = Int32.Parse(vcRNC.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                vnTotal += vCalculo;
+            }
+            if (vnTotal % 11 == 0 && vDigito == "1" || vnTotal % 11 == 1 && vDigito == "1" ||
+                (11 - (vnTotal % 11)).Equals(vDigito))
+                return true;
+            else
+                return false;
         }
     }
 }

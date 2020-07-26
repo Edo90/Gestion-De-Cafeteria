@@ -142,6 +142,12 @@
     <Compile Include="FrmEmpleadoEd.Designer.cs">
       <DependentUpon>FrmEmpleadoEd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GestionCafeteriaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCafeteriaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionCafeteriaDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="GestionCafeteriaEntity.Context.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +271,9 @@
     <EmbeddedResource Include="FrmEmpleadoEd.resx">
       <DependentUpon>FrmEmpleadoEd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMarcas.resx">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +319,17 @@
     </None>
     <None Include="GestionCafeteriaDataSet.xss">
       <DependentUpon>GestionCafeteriaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GestionCafeteriaDataSet1.xsc">
+      <DependentUpon>GestionCafeteriaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="GestionCafeteriaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionCafeteriaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionCafeteriaDataSet1.xss">
+      <DependentUpon>GestionCafeteriaDataSet1.xsd</DependentUpon>
     </None>
     <None Include="GestionCafeteriaEntity.edmx.diagram">
       <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>

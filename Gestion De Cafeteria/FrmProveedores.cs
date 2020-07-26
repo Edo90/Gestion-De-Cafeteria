@@ -69,6 +69,9 @@ namespace Gestion_De_Cafeteria
                             )
                               select new { em.IdProveedor, em.NombreComercial, em.RNC, em.FechaRegistro, em.Estado };
             DgvProveedores.DataSource = proveedores.ToList();
+            DgvProveedores.Columns[0].Visible = false;
+            DgvProveedores.Columns[1].HeaderText = "Nombre Comercial";
+            DgvProveedores.Columns[3].HeaderText = "Fecha de registro";
             DgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }

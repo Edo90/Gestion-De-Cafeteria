@@ -46,11 +46,12 @@ namespace Gestion_De_Cafeteria
             Usuario usuario = new Usuario();
             usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
             usuario.Nombre = row.Cells[1].Value.ToString();
-            usuario.Cedula = Int32.Parse(row.Cells[2].Value.ToString());
+            usuario.Cedula = row.Cells[2].Value.ToString();
             usuario.TipoUsuario = row.Cells[3].Value.ToString();
             usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
             usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
             usuario.Estado = row.Cells[6].Value.ToString();
+            usuario.Clave = row.Cells[7].Value.ToString();
             FrmUsuariosEd fue = new FrmUsuariosEd();
             fue.usuario = usuario;
             fue.ShowDialog();
@@ -75,9 +76,15 @@ namespace Gestion_De_Cafeteria
                                 em.TipoUsuario,
                                 em.LimiteCredito,
                                 em.FechaRegistro,
-                                em.Estado
+                                em.Estado,
+                                em.Clave
                               };
             DgvUsuarios.DataSource = usuarios.ToList();
+            DgvUsuarios.Columns[0].Visible = false;
+            DgvUsuarios.Columns[7].Visible = false;
+            DgvUsuarios.Columns[3].HeaderText = "Tipo de Usuario";
+            DgvUsuarios.Columns[4].HeaderText = "Limite de credito";
+            DgvUsuarios.Columns[5].HeaderText = "Fecha de registro";
             DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 

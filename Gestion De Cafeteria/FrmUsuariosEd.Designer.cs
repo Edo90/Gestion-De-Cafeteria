@@ -28,9 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CmdEliminar = new System.Windows.Forms.Button();
             this.CmdGuadar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TxtLimiteCredito = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CbxTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.tipoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gestionCafeteriaDataSet1 = new Gestion_De_Cafeteria.GestionCafeteriaDataSet1();
+            this.label6 = new System.Windows.Forms.Label();
             this.DtpFechaRegistro = new System.Windows.Forms.DateTimePicker();
             this.CbxEstado = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,16 +48,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtIdUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CbxTipoUsuario = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.TxtLimiteCredito = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tipo_UsuarioTableAdapter = new Gestion_De_Cafeteria.GestionCafeteriaDataSet1TableAdapters.Tipo_UsuarioTableAdapter();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoUsuarioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionCafeteriaDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdEliminar
             // 
-            this.CmdEliminar.Location = new System.Drawing.Point(286, 373);
+            this.CmdEliminar.Location = new System.Drawing.Point(286, 418);
             this.CmdEliminar.Name = "CmdEliminar";
             this.CmdEliminar.Size = new System.Drawing.Size(91, 66);
             this.CmdEliminar.TabIndex = 5;
@@ -60,7 +68,7 @@
             // 
             // CmdGuadar
             // 
-            this.CmdGuadar.Location = new System.Drawing.Point(19, 373);
+            this.CmdGuadar.Location = new System.Drawing.Point(19, 418);
             this.CmdGuadar.Name = "CmdGuadar";
             this.CmdGuadar.Size = new System.Drawing.Size(91, 66);
             this.CmdGuadar.TabIndex = 4;
@@ -70,6 +78,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtClave);
             this.panel1.Controls.Add(this.TxtLimiteCredito);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.CbxTipoUsuario);
@@ -86,13 +96,59 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(367, 346);
+            this.panel1.Size = new System.Drawing.Size(367, 389);
             this.panel1.TabIndex = 3;
+            // 
+            // TxtLimiteCredito
+            // 
+            this.TxtLimiteCredito.Location = new System.Drawing.Point(106, 249);
+            this.TxtLimiteCredito.Name = "TxtLimiteCredito";
+            this.TxtLimiteCredito.Size = new System.Drawing.Size(181, 20);
+            this.TxtLimiteCredito.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 252);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Limite de Credito";
+            // 
+            // CbxTipoUsuario
+            // 
+            this.CbxTipoUsuario.DataSource = this.tipoUsuarioBindingSource;
+            this.CbxTipoUsuario.DisplayMember = "Descripcion";
+            this.CbxTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxTipoUsuario.FormattingEnabled = true;
+            this.CbxTipoUsuario.Location = new System.Drawing.Point(106, 195);
+            this.CbxTipoUsuario.Name = "CbxTipoUsuario";
+            this.CbxTipoUsuario.Size = new System.Drawing.Size(128, 21);
+            this.CbxTipoUsuario.TabIndex = 13;
+            // 
+            // tipoUsuarioBindingSource
+            // 
+            this.tipoUsuarioBindingSource.DataMember = "Tipo_Usuario";
+            this.tipoUsuarioBindingSource.DataSource = this.gestionCafeteriaDataSet1;
+            // 
+            // gestionCafeteriaDataSet1
+            // 
+            this.gestionCafeteriaDataSet1.DataSetName = "GestionCafeteriaDataSet1";
+            this.gestionCafeteriaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 198);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Tipo de Usuario";
             // 
             // DtpFechaRegistro
             // 
             this.DtpFechaRegistro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFechaRegistro.Location = new System.Drawing.Point(106, 256);
+            this.DtpFechaRegistro.Location = new System.Drawing.Point(106, 299);
             this.DtpFechaRegistro.Name = "DtpFechaRegistro";
             this.DtpFechaRegistro.Size = new System.Drawing.Size(128, 20);
             this.DtpFechaRegistro.TabIndex = 11;
@@ -104,7 +160,7 @@
             this.CbxEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.CbxEstado.Location = new System.Drawing.Point(106, 310);
+            this.CbxEstado.Location = new System.Drawing.Point(106, 353);
             this.CbxEstado.Name = "CbxEstado";
             this.CbxEstado.Size = new System.Drawing.Size(128, 21);
             this.CbxEstado.TabIndex = 10;
@@ -112,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 313);
+            this.label5.Location = new System.Drawing.Point(3, 356);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 8;
@@ -121,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 262);
+            this.label4.Location = new System.Drawing.Point(3, 305);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 13);
             this.label4.TabIndex = 6;
@@ -129,7 +185,7 @@
             // 
             // TxtCedula
             // 
-            this.TxtCedula.Location = new System.Drawing.Point(106, 102);
+            this.TxtCedula.Location = new System.Drawing.Point(106, 145);
             this.TxtCedula.Name = "TxtCedula";
             this.TxtCedula.Size = new System.Drawing.Size(181, 20);
             this.TxtCedula.TabIndex = 5;
@@ -137,7 +193,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 105);
+            this.label3.Location = new System.Drawing.Point(3, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 4;
@@ -176,48 +232,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Identificador";
             // 
-            // CbxTipoUsuario
+            // tipo_UsuarioTableAdapter
             // 
-            this.CbxTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxTipoUsuario.FormattingEnabled = true;
-            this.CbxTipoUsuario.Items.AddRange(new object[] {
-            "Administrador",
-            "Miembro"});
-            this.CbxTipoUsuario.Location = new System.Drawing.Point(106, 152);
-            this.CbxTipoUsuario.Name = "CbxTipoUsuario";
-            this.CbxTipoUsuario.Size = new System.Drawing.Size(128, 21);
-            this.CbxTipoUsuario.TabIndex = 13;
+            this.tipo_UsuarioTableAdapter.ClearBeforeFill = true;
             // 
-            // label6
+            // txtClave
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 155);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Tipo de Usuario";
+            this.txtClave.Location = new System.Drawing.Point(106, 101);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(181, 20);
+            this.txtClave.TabIndex = 7;
             // 
-            // TxtLimiteCredito
+            // label8
             // 
-            this.TxtLimiteCredito.Location = new System.Drawing.Point(106, 206);
-            this.TxtLimiteCredito.Name = "TxtLimiteCredito";
-            this.TxtLimiteCredito.Size = new System.Drawing.Size(181, 20);
-            this.TxtLimiteCredito.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 209);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Limite de Credito";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 108);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Contraseña";
             // 
             // FrmUsuariosEd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 451);
+            this.ClientSize = new System.Drawing.Size(393, 495);
             this.Controls.Add(this.CmdEliminar);
             this.Controls.Add(this.CmdGuadar);
             this.Controls.Add(this.panel1);
@@ -226,6 +265,8 @@
             this.Load += new System.EventHandler(this.FrmUsuariosEd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoUsuarioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gestionCafeteriaDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +290,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtLimiteCredito;
         private System.Windows.Forms.Label label7;
+        private GestionCafeteriaDataSet1 gestionCafeteriaDataSet1;
+        private System.Windows.Forms.BindingSource tipoUsuarioBindingSource;
+        private GestionCafeteriaDataSet1TableAdapters.Tipo_UsuarioTableAdapter tipo_UsuarioTableAdapter;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtClave;
     }
 }

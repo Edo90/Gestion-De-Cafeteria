@@ -43,9 +43,9 @@ namespace Gestion_De_Cafeteria
                     Marca marca = entities.Marcas.Find(Int32.Parse(TxtIdMarca.Text));
                     marca.Descripcion = TxtDescripcion.Text;
                     marca.Estado = CbxEstado.Text;
-                    entities.Entry<Marca>(marca).State = EntityState.Modified;
+                    entities.Entry(marca).State = EntityState.Modified;
                     entities.SaveChanges();
-                    entities.Entry<Marca>(marca).Reload();
+                    entities.Entry(marca).Reload();
                 }
                 else
                 {
