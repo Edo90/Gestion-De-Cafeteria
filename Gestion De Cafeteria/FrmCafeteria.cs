@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmCafeteria : Form
     {
-        public Cafeteria cafeteria { get; set; }
-        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        public Cafeteria Cafeteria { get; set; }
+        private readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmCafeteria()
         {
@@ -30,26 +30,26 @@ namespace Gestion_De_Cafeteria
 
         private void ConsultarCafeteria()
         {
-           
-                var listadoCafeterias = (from caf in entities.Cafeterias
-                                        join cam in entities.Campus on caf.ID_Campus equals cam.ID
-                                        join emp in entities.Empleadoes on caf.Encargado equals emp.IdEMpleado
-                                        select new 
-                                        {
-                                            caf.ID,
-                                            caf.Descripcion,
-                                            idCampus = caf.ID_Campus,
-                                            nombreCampus = cam.Descripcion,
-                                            idEncargado = caf.Encargado,
-                                            nombreEncargado = emp.Nombre,
-                                            caf.Estado
-                                        }).ToList();
+
+            var listadoCafeterias = (from caf in entities.Cafeterias
+                                     join cam in entities.Campus on caf.ID_Campus equals cam.ID
+                                     join emp in entities.Empleadoes on caf.Encargado equals emp.IdEMpleado
+                                     select new
+                                     {
+                                         caf.ID,
+                                         caf.Descripcion,
+                                         idCampus = caf.ID_Campus,
+                                         Campus = cam.Descripcion,
+                                         idEncargado = caf.Encargado,
+                                         Encargado = emp.Nombre,
+                                         caf.Estado
+                                     }).ToList();
 
             DgvCafeteria.DataSource = listadoCafeterias.ToList();
 
             DgvCafeteria.Columns[2].Visible = false;
             DgvCafeteria.Columns[4].Visible = false;
-
+            DgvCafeteria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CmdBuscar_Click_1(object sender, EventArgs e)
@@ -59,32 +59,30 @@ namespace Gestion_De_Cafeteria
 
         private void consultarPorCriterio()
         {
-            var cafet = from em in entities.Cafeterias
+            var cafeteria = from em in entities.Cafeterias
                         join cam in entities.Campus on em.ID_Campus equals cam.ID
                         join emp in entities.Empleadoes on em.Encargado equals emp.IdEMpleado
                         where (em.ID.ToString().StartsWith(txtBuscarPor.Text) ||
                         em.Descripcion.StartsWith(txtBuscarPor.Text) ||
-                        em.Estado.StartsWith(txtBuscarPor.Text) ||
-                        em.Encargado.ToString().StartsWith(txtBuscarPor.Text) ||
-                        em.Estado.StartsWith(txtBuscarPor.Text)
+                        em.Encargado.ToString().StartsWith(txtBuscarPor.Text)
                         )
                         select new
                         {
                             ID = em.ID,
                             Descripcion = em.Descripcion,
                             idCampus = em.ID_Campus,
-                            nombreCampus = cam.Descripcion,
-                            idEncargado = em.Encargado,
+                            Campus = cam.Descripcion,
+                            Encargado = em.Encargado,
                             nombreEncargado = emp.Nombre,
                             Estado = em.Estado
                         };
-            DgvCafeteria.DataSource = cafet.ToList();
+            DgvCafeteria.DataSource = cafeteria.ToList();
         }
 
         private void CmdAgregar_Click(object sender, EventArgs e)
         {
             FrmEdCafeteria frm = new FrmEdCafeteria();
-            frm.llenarCombox();
+            frm.LlenarCombox();
             frm.ShowDialog();
         }
         private void FrmCafeteria_Activated(object sender, EventArgs e)
@@ -101,13 +99,14 @@ namespace Gestion_De_Cafeteria
                 Descripcion = row.Cells[1].Value.ToString(),
                 ID_Campus = int.Parse(row.Cells[2].Value.ToString()),
                 Encargado = int.Parse(row.Cells[4].Value.ToString()),
-                Estado = row.Cells[6].Value.ToString()
+                Estado = (bool)row.Cells[6].Value
             };
+            var estado = row.Cells[6].Value;
             FrmEdCafeteria fed = new FrmEdCafeteria
             {
                 cafeteria = cafeteria
             };
-            fed.llenarCombox();
+            fed.LlenarCombox();
 
             fed.ShowDialog();
         }

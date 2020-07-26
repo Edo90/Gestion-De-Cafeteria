@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity.Migrations;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Gestion_De_Cafeteria
 {
     public partial class FrmEdCampus : Form
     {
-        private const int INACTIVE = 1;
-        private const int ACTIVE = 0;
         public Campu campus;
-        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        private readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
 
         public FrmEdCampus()
         {
@@ -29,7 +20,7 @@ namespace Gestion_De_Cafeteria
             {
                 txtID.Text = campus.ID.ToString();
                 txtDescripcion.Text = campus.Descripcion;
-                CmbEstado.SelectedIndex = campus.Estado.Trim() == "0" ? INACTIVE : ACTIVE;
+                CmbEstado.SelectedIndex = campus.Estado ? 0 : 1;
             }
             
         }
@@ -41,7 +32,7 @@ namespace Gestion_De_Cafeteria
             {
                 ID = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
                 Descripcion = txtDescripcion.Text,
-                Estado = CmbEstado.SelectedItem.ToString() == "Activo" ? "1" : "0"
+                Estado = CmbEstado.SelectedItem.ToString() == "Activo"
             };
 
 
@@ -62,7 +53,7 @@ namespace Gestion_De_Cafeteria
             Campu campus3 = entities.Campus.Find(Int32.Parse(txtID.Text));
             if (campus3 != null)
             {
-                campus3.Estado = "0";
+                campus3.Estado = false;
                 entities.SaveChanges();
                 MessageBox.Show("Eliminado con exito");
             }

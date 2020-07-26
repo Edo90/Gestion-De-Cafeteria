@@ -28,10 +28,8 @@ namespace Gestion_De_Cafeteria
                     vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
             }
 
-            if (vnTotal % 10 == 0)
-                return true;
-            else
-                return false;
+            return vnTotal % 10 == 0;
+                
         }
 
         public bool esUnRNCValido(string pRNC)

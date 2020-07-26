@@ -57,6 +57,7 @@ namespace Gestion_De_Cafeteria
             if (!vc.validaCedula(cedulaTB.Text))
             {
                 MessageBox.Show("Cedula incorrecta");
+                return;
             }
             else
             {
@@ -148,18 +149,34 @@ namespace Gestion_De_Cafeteria
             {
                 return;
             }
+            var success = int.TryParse(txtID.Text, out int empleadoId);
+            if (!success)
+            {
+                MessageBox.Show("Id Invalido", "Info");
+                return;
+            }
+                
+            Empleado empleado = entities.Empleadoes.Find(empleadoId);
+            try
+            {
+                if (empleado != null)
+                {
+                    entities.Empleadoes.Remove(empleado);
+                    entities.SaveChanges();
+                    MessageBox.Show("Empleado eliminado con exito");
+                }
+                else
+                {
+                    MessageBox.Show("Marca no existe");
+                }
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
 
-            Empleado empleado = entities.Empleadoes.Find(Int32.Parse(txtID.Text));
-            if (empleado != null)
-            {
-                empleado.Estado = DEACTIVE;
-                entities.SaveChanges();
-                MessageBox.Show("Empleado eliminado con exito");
+                MessageBox.Show("Empleado no puede ser eliminado por estar asignado a una cafeteria", "Error");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Marca no existe");
-            }
+            
             this.Close();
         }
     }

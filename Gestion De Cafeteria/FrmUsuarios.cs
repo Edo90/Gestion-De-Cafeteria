@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmUsuarios : Form
     {
-        public Usuario usuario { get; set; }
-        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        public Usuario Usuario { get; set; }
+        private readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmUsuarios()
         {
             InitializeComponent();
@@ -46,13 +46,15 @@ namespace Gestion_De_Cafeteria
             Usuario usuario = new Usuario();
             usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
             usuario.Nombre = row.Cells[1].Value.ToString();
-            usuario.Cedula = Int32.Parse(row.Cells[2].Value.ToString());
+            usuario.Cedula = row.Cells[2].Value.ToString();
             usuario.TipoUsuario = row.Cells[3].Value == null ? String.Empty : row.Cells[3].Value.ToString();
             usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
             usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
-            usuario.Estado = row.Cells[6].Value.ToString();
-            FrmUsuariosEd fue = new FrmUsuariosEd();
-            fue.usuario = usuario;
+            usuario.Estado = (bool)row.Cells[6].Value;
+            FrmUsuariosEd fue = new FrmUsuariosEd
+            {
+                Usuario = usuario
+            };
             fue.ShowDialog();
         }
 
@@ -63,8 +65,7 @@ namespace Gestion_De_Cafeteria
                             em.Nombre.StartsWith(TxtDatoABuscar.Text) ||
                             em.Cedula.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.LimiteCredito.ToString().StartsWith(TxtDatoABuscar.Text) ||
-                            em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text) ||
-                            em.Estado.StartsWith(TxtDatoABuscar.Text)
+                            em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text)
                             )
                               select new 
                               { 
