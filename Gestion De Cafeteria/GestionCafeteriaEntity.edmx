@@ -116,7 +116,7 @@
           <Property Name="LimiteCredito" Type="numeric" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="date" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
-          <Property Name="TipoUsuario" Type="varchar" MaxLength="13" />
+          <Property Name="TipoUsuario" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Articulos__Marca__4E88ABD4">
           <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
@@ -190,7 +190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__Usuar__08B54D69">
+        <Association Name="FK__Facturaci__Usuar__0B91BA14">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,6 +223,18 @@
             </Principal>
             <Dependent Role="ProveedoresProductos">
               <PropertyRef Name="ProveedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__TipoUs__0C85DE4D">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -262,7 +274,7 @@
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__Usuar__08B54D69" Association="Self.FK__Facturaci__Usuar__08B54D69">
+          <AssociationSet Name="FK__Facturaci__Usuar__0B91BA14" Association="Self.FK__Facturaci__Usuar__0B91BA14">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
@@ -273,6 +285,10 @@
           <AssociationSet Name="FK__Proveedor__Prove__412EB0B6" Association="Self.FK__Proveedor__Prove__412EB0B6">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="ProveedoresProductos" EntitySet="ProveedoresProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__TipoUs__0C85DE4D" Association="Self.FK__Usuarios__TipoUs__0C85DE4D">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -307,6 +323,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D" FromRole="Tipo_Usuario" ToRole="Usuario" />
         </EntityType>
         <EntityContainer Name="GestionCafeteriaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Marcas" EntityType="Self.Marca" />
@@ -352,9 +369,13 @@
             <End Role="Cafeteria" EntitySet="Cafeterias" />
           </AssociationSet>
           <EntitySet Name="Usuarios" EntityType="GestionCafeteriaModel.Usuario" />
-          <AssociationSet Name="FK__Facturaci__Usuar__08B54D69" Association="GestionCafeteriaModel.FK__Facturaci__Usuar__08B54D69">
+          <AssociationSet Name="FK__Facturaci__Usuar__0B91BA14" Association="GestionCafeteriaModel.FK__Facturaci__Usuar__0B91BA14">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__TipoUs__0C85DE4D" Association="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Empleado">
@@ -447,7 +468,7 @@
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Articulo" Relationship="GestionCafeteriaModel.FK__Facturaci__Artic__534D60F1" FromRole="Facturacion_Articulos" ToRole="Articulo" />
           <NavigationProperty Name="Empleado" Relationship="GestionCafeteriaModel.FK__Facturaci__Emple__52593CB8" FromRole="Facturacion_Articulos" ToRole="Empleado" />
-          <NavigationProperty Name="Usuario" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__08B54D69" FromRole="Facturacion_Articulos" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__0B91BA14" FromRole="Facturacion_Articulos" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK__Articulos__Marca__4E88ABD4">
           <End Type="GestionCafeteriaModel.Marca" Role="Marca" Multiplicity="1" />
@@ -552,10 +573,11 @@
           <Property Name="LimiteCredito" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="TipoUsuario" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__08B54D69" FromRole="Usuario" ToRole="Facturacion_Articulos" />
+          <Property Name="TipoUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__0B91BA14" FromRole="Usuario" ToRole="Facturacion_Articulos" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D" FromRole="Usuario" ToRole="Tipo_Usuario" />
         </EntityType>
-        <Association Name="FK__Facturaci__Usuar__08B54D69">
+        <Association Name="FK__Facturaci__Usuar__0B91BA14">
           <End Type="GestionCafeteriaModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="GestionCafeteriaModel.Facturacion_Articulos" Role="Facturacion_Articulos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -564,6 +586,18 @@
             </Principal>
             <Dependent Role="Facturacion_Articulos">
               <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__TipoUs__0C85DE4D">
+          <End Type="GestionCafeteriaModel.Tipo_Usuario" Role="Tipo_Usuario" Multiplicity="1" />
+          <End Type="GestionCafeteriaModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TipoUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

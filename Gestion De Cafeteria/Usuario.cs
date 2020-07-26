@@ -26,9 +26,10 @@ namespace Gestion_De_Cafeteria
         public Nullable<decimal> LimiteCredito { get; set; }
         public System.DateTime FechaRegistro { get; set; }
         public bool Estado { get; set; }
-        public string TipoUsuario { get; set; }
+        public int TipoUsuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual Tipo_Usuario Tipo_Usuario { get; set; }
     }
 }

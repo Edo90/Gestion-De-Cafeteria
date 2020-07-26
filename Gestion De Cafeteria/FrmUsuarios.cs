@@ -47,10 +47,11 @@ namespace Gestion_De_Cafeteria
             usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
             usuario.Nombre = row.Cells[1].Value.ToString();
             usuario.Cedula = row.Cells[2].Value.ToString();
-            usuario.TipoUsuario = row.Cells[3].Value == null ? String.Empty : row.Cells[3].Value.ToString();
+            usuario.TipoUsuario = (int)row.Cells[7].Value;
             usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
             usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
             usuario.Estado = (bool)row.Cells[6].Value;
+
             FrmUsuariosEd fue = new FrmUsuariosEd
             {
                 Usuario = usuario
@@ -61,6 +62,8 @@ namespace Gestion_De_Cafeteria
         private void ConsultarPorCriterio()
         {
             var usuarios = from em in entities.Usuarios
+                           join tipo in entities.Tipo_Usuario
+                           on em.TipoUsuario equals tipo.ID
                               where (em.IdUsuario.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Nombre.StartsWith(TxtDatoABuscar.Text) ||
                             em.Cedula.ToString().StartsWith(TxtDatoABuscar.Text) ||
@@ -72,13 +75,16 @@ namespace Gestion_De_Cafeteria
                                 em.IdUsuario,
                                 em.Nombre,
                                 em.Cedula,
-                                em.TipoUsuario,
+                                tipo.Descripcion,
                                 em.LimiteCredito,
                                 em.FechaRegistro,
-                                em.Estado
+                                em.Estado,
+                                em.TipoUsuario
                               };
             DgvUsuarios.DataSource = usuarios.ToList();
             DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvUsuarios.Columns[7].Visible = false;
+
         }
 
         private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)

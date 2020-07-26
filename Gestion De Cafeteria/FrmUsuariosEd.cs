@@ -24,6 +24,12 @@ namespace Gestion_De_Cafeteria
         private void FrmUsuariosEd_Load(object sender, EventArgs e)
         {
             CbxTipoUsuario.Items.AddRange(entities.Tipo_Usuario.Select(x => x.Descripcion).ToArray());
+
+            CbxTipoUsuario.DataSource = entities.Tipo_Usuario.ToList();
+            CbxTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbxTipoUsuario.DisplayMember = "Descripcion";
+            CbxTipoUsuario.ValueMember = "ID";
+
             CbxEstado.SelectedIndex = 0;
             if (Usuario != null)
             {
@@ -49,12 +55,12 @@ namespace Gestion_De_Cafeteria
                     MessageBox.Show("Cedula incorrecta");
                     return;
                 }
-                if (TxtIdUsuario.Text != "")
+                if (!string.IsNullOrEmpty(TxtIdUsuario.Text))
                 {
                     Usuario usuario = entities.Usuarios.Find(Int32.Parse(TxtIdUsuario.Text));
                     usuario.Nombre = TxtNombre.Text;
                     usuario.Cedula = TxtCedula.Text;
-                    usuario.TipoUsuario = CbxTipoUsuario.Text;
+                    usuario.TipoUsuario = (int)CbxTipoUsuario.SelectedValue;
                     usuario.LimiteCredito = decimal.Parse(TxtLimiteCredito.Text);
                     usuario.FechaRegistro = DtpFechaRegistro.Value;
                     usuario.Estado = CbxEstado.Text == "";
@@ -68,7 +74,7 @@ namespace Gestion_De_Cafeteria
                     {
                         Nombre = TxtNombre.Text,
                         Cedula = TxtCedula.Text,
-                        TipoUsuario = CbxTipoUsuario.Text,
+                        TipoUsuario = (int)CbxTipoUsuario.SelectedValue,
                         LimiteCredito = decimal.Parse(TxtLimiteCredito.Text),
                         FechaRegistro = DtpFechaRegistro.Value,
                         Estado = CbxEstado.SelectedItem == "Activo"

@@ -13,11 +13,9 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmEmpleadoEd : Form
     {
-        private const bool DEACTIVE = false;
         private Empleado empleado;
-        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
-
-        ValidacionCedula vc = new ValidacionCedula();
+        private readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        readonly ValidacionCedula vc = new ValidacionCedula();
         public FrmEmpleadoEd()
         {
             InitializeComponent();
@@ -61,8 +59,6 @@ namespace Gestion_De_Cafeteria
             }
             else
             {
-
-
                 empleado = new Empleado()
                 {
                     IdEMpleado = string.IsNullOrEmpty(txtID.Text) ? 0 : int.Parse(txtID.Text),
