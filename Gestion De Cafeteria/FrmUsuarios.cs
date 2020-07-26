@@ -12,8 +12,8 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FrmUsuarios : Form
     {
-        public Usuario usuario { get; set; }
-        private GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        public Usuario Usuario { get; set; }
+        private readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
         public FrmUsuarios()
         {
             InitializeComponent();
@@ -43,41 +43,53 @@ namespace Gestion_De_Cafeteria
         private void DgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.DgvUsuarios.SelectedRows[0];
-            Usuario usuario = new Usuario();
-            usuario.IdUsuario = Int32.Parse(row.Cells[0].Value.ToString());
-            usuario.Nombre = row.Cells[1].Value.ToString();
-            usuario.Cedula = Int32.Parse(row.Cells[2].Value.ToString());
-            usuario.TipoUsuario = row.Cells[3].Value == null ? String.Empty : row.Cells[3].Value.ToString();
-            usuario.LimiteCredito = decimal.Parse(row.Cells[4].Value.ToString());
-            usuario.FechaRegistro = DateTime.Parse(row.Cells[5].Value.ToString());
-            usuario.Estado = row.Cells[6].Value.ToString();
-            FrmUsuariosEd fue = new FrmUsuariosEd();
-            fue.usuario = usuario;
+            Usuario usuario = new Usuario
+            {
+                IdUsuario = Int32.Parse(row.Cells[0].Value.ToString()),
+                Nombre = row.Cells[1].Value.ToString(),
+                Clave = row.Cells[2].Value.ToString(),
+                Cedula = row.Cells[3].Value.ToString(),
+                TipoUsuario = (int)row.Cells[8].Value,
+                LimiteCredito = decimal.Parse(row.Cells[5].Value.ToString()),
+                FechaRegistro = DateTime.Parse(row.Cells[6].Value.ToString()),
+                Estado = (bool)row.Cells[7].Value
+            };
+
+            FrmUsuariosEd fue = new FrmUsuariosEd
+            {
+                Usuario = usuario
+            };
             fue.ShowDialog();
         }
 
         private void ConsultarPorCriterio()
         {
             var usuarios = from em in entities.Usuarios
+                           join tipo in entities.Tipo_Usuario
+                           on em.TipoUsuario equals tipo.ID
                               where (em.IdUsuario.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.Nombre.StartsWith(TxtDatoABuscar.Text) ||
                             em.Cedula.ToString().StartsWith(TxtDatoABuscar.Text) ||
                             em.LimiteCredito.ToString().StartsWith(TxtDatoABuscar.Text) ||
-                            em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text) ||
-                            em.Estado.StartsWith(TxtDatoABuscar.Text)
+                            em.FechaRegistro.ToString().StartsWith(TxtDatoABuscar.Text)
                             )
                               select new 
                               { 
                                 em.IdUsuario,
                                 em.Nombre,
+                                Clave = "*******",
                                 em.Cedula,
-                                em.TipoUsuario,
+                                tipo.Descripcion,
                                 em.LimiteCredito,
                                 em.FechaRegistro,
-                                em.Estado
+                                em.Estado,
+                                em.TipoUsuario
                               };
             DgvUsuarios.DataSource = usuarios.ToList();
             DgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvUsuarios.Columns[8].Visible = false;
+            
+
         }
 
         private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)

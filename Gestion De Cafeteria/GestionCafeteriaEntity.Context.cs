@@ -25,8 +25,6 @@ namespace Gestion_De_Cafeteria
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cafeteria> Cafeterias { get; set; }
-        public virtual DbSet<Campu> Campus { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Proveedore> Proveedores { get; set; }
         public virtual DbSet<Tipo_Usuario> Tipo_Usuario { get; set; }
@@ -35,6 +33,8 @@ namespace Gestion_De_Cafeteria
         public virtual DbSet<ProveedoresProducto> ProveedoresProductos { get; set; }
         public virtual DbSet<Articulo> Articulos { get; set; }
         public virtual DbSet<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual DbSet<Cafeteria> Cafeterias { get; set; }
+        public virtual DbSet<Campu> Campus { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

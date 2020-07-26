@@ -57,37 +57,40 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(17, 16);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(437, 302);
             this.panel1.TabIndex = 0;
             // 
             // CmbEstado
             // 
+            this.CmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbEstado.FormattingEnabled = true;
             this.CmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
             this.CmbEstado.Location = new System.Drawing.Point(128, 223);
-            this.CmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.CmbEstado.Name = "CmbEstado";
             this.CmbEstado.Size = new System.Drawing.Size(160, 24);
             this.CmbEstado.TabIndex = 9;
             // 
             // CmbEncargado
             // 
+            this.CmbEncargado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbEncargado.FormattingEnabled = true;
             this.CmbEncargado.Location = new System.Drawing.Point(128, 175);
-            this.CmbEncargado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbEncargado.Margin = new System.Windows.Forms.Padding(4);
             this.CmbEncargado.Name = "CmbEncargado";
             this.CmbEncargado.Size = new System.Drawing.Size(160, 24);
             this.CmbEncargado.TabIndex = 8;
             // 
             // CmbCampus
             // 
+            this.CmbCampus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCampus.FormattingEnabled = true;
             this.CmbCampus.Location = new System.Drawing.Point(128, 123);
-            this.CmbCampus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbCampus.Margin = new System.Windows.Forms.Padding(4);
             this.CmbCampus.Name = "CmbCampus";
             this.CmbCampus.Size = new System.Drawing.Size(160, 24);
             this.CmbCampus.TabIndex = 7;
@@ -95,7 +98,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(128, 78);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(160, 22);
             this.txtDescripcion.TabIndex = 6;
@@ -104,7 +107,7 @@
             // 
             this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(128, 33);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(160, 22);
             this.txtID.TabIndex = 5;
@@ -162,7 +165,7 @@
             // CmdEliminar
             // 
             this.CmdEliminar.Location = new System.Drawing.Point(245, 337);
-            this.CmdEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdEliminar.Name = "CmdEliminar";
             this.CmdEliminar.Size = new System.Drawing.Size(100, 66);
             this.CmdEliminar.TabIndex = 5;
@@ -173,7 +176,7 @@
             // CmdGuardar
             // 
             this.CmdGuardar.Location = new System.Drawing.Point(103, 337);
-            this.CmdGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.CmdGuardar.Name = "CmdGuardar";
             this.CmdGuardar.Size = new System.Drawing.Size(100, 66);
             this.CmdGuardar.TabIndex = 4;
@@ -189,7 +192,7 @@
             this.Controls.Add(this.CmdEliminar);
             this.Controls.Add(this.CmdGuardar);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmEdCafeteria";
             this.Text = "Edicion Cafeteria";
             this.Load += new System.EventHandler(this.FrmEdCafeteria_Load);

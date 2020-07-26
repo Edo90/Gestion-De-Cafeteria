@@ -5,14 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f37b0e0596fa46cf96c50ddc1d5491d6" Name="Diagram1">
-        <EntityTypeShape EntityType="GestionCafeteriaModel.Cafeteria" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionCafeteriaModel.Campu" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Marca" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Proveedore" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Tipo_Usuario" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
-        <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__2F10007B" ManuallyRouted="false" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Empleado" Width="1.5" PointX="0.75" PointY="7.875" />
-        <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__Encar__31EC6D26" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.Producto" Width="1.5" PointX="7.375" PointY="4.75" />
         <EntityTypeShape EntityType="GestionCafeteriaModel.ProveedoresProducto" Width="1.5" PointX="5.125" PointY="7.625" />
         <AssociationConnector Association="GestionCafeteriaModel.FK__Proveedor__Produ__4222D4EF" />
@@ -23,9 +19,14 @@
         <AssociationConnector Association="GestionCafeteriaModel.FK__Articulos__Prove__4F7CD00D" />
         <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Artic__534D60F1" />
         <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Emple__52593CB8" />
-        <EntityTypeShape EntityType="GestionCafeteriaModel.Usuario" Width="1.5" PointX="3.375" PointY="11" />
-        <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" />
-      </Diagram>
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Cafeteria" Width="1.5" PointX="5" PointY="3.875" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__Encar__6FE99F9F" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Campu" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__7B5B524B" />
+        <EntityTypeShape EntityType="GestionCafeteriaModel.Usuario" Width="1.5" PointX="10.25" PointY="0.75" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Facturaci__Usuar__0D7A0286" />
+        <AssociationConnector Association="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -34,8 +34,7 @@ namespace Gestion_De_Cafeteria
         {
             var campus = from cam in entities.Campus
                          where (cam.ID.ToString().StartsWith(txtBuscarPor.Text) ||
-                         cam.Descripcion.StartsWith(txtBuscarPor.Text) ||
-                         cam.Estado.StartsWith(txtBuscarPor.Text)
+                         cam.Descripcion.StartsWith(txtBuscarPor.Text)
                          )
                          select new
                          {
@@ -64,7 +63,7 @@ namespace Gestion_De_Cafeteria
             Campu campus = new Campu();
             campus.ID = Int32.Parse(row.Cells[0].Value.ToString());
             campus.Descripcion = row.Cells[1].Value.ToString();
-            campus.Estado = row.Cells[2].Value.ToString();
+            campus.Estado = (bool)row.Cells[2].Value;
             FrmEdCampus fed = new FrmEdCampus();
             fed.campus = campus;
             

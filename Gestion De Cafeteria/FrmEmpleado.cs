@@ -49,8 +49,7 @@ namespace Gestion_De_Cafeteria
                             )
                             select new { empleado.IdEMpleado,empleado.Nombre, empleado.Direccion, empleado.Salario, empleado.Cedula, empleado.Tanda_labor, empleado.Porciento_Comision, empleado.Fecha_Ingreso, empleado.Estado};
 
-
-
+            
             empleadoGridView.DataSource = empleados.ToList();
         }
 

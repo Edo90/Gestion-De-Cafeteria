@@ -24,8 +24,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ID_Campus" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="2" />
           <Property Name="Encargado" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Campus">
           <Key>
@@ -33,7 +33,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="2" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -112,11 +112,12 @@
           </Key>
           <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cedula" Type="int" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="LimiteCredito" Type="numeric" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="date" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="TipoUsuario" Type="varchar" MaxLength="13" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="TipoUsuario" Type="int" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__Articulos__Marca__4E88ABD4">
           <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
@@ -142,7 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cafeteria__Encar__4BAC3F29">
+        <Association Name="FK__Cafeteria__Encar__00200768">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
           <End Role="Cafeteria" Type="Self.Cafeteria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -154,7 +155,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cafeteria__ID_Ca__4AB81AF0">
+        <Association Name="FK__Cafeteria__ID_Ca__7B5B524B">
           <End Role="Campus" Type="Self.Campus" Multiplicity="1" />
           <End Role="Cafeteria" Type="Self.Cafeteria" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturaci__Usuar__5441852A">
+        <Association Name="FK__Facturaci__Usuar__0D7A0286">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Facturacion_Articulos" Type="Self.Facturacion_Articulos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,6 +227,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Usuarios__TipoUs__0C85DE4D">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GestionCafeteriaModelStoreContainer">
           <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cafeteria" EntityType="Self.Cafeteria" Schema="dbo" store:Type="Tables" />
@@ -246,11 +259,11 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Articulos" EntitySet="Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cafeteria__Encar__4BAC3F29" Association="Self.FK__Cafeteria__Encar__4BAC3F29">
+          <AssociationSet Name="FK__Cafeteria__Encar__00200768" Association="Self.FK__Cafeteria__Encar__00200768">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Cafeteria" EntitySet="Cafeteria" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cafeteria__ID_Ca__4AB81AF0" Association="Self.FK__Cafeteria__ID_Ca__4AB81AF0">
+          <AssociationSet Name="FK__Cafeteria__ID_Ca__7B5B524B" Association="Self.FK__Cafeteria__ID_Ca__7B5B524B">
             <End Role="Campus" EntitySet="Campus" />
             <End Role="Cafeteria" EntitySet="Cafeteria" />
           </AssociationSet>
@@ -262,7 +275,7 @@
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturaci__Usuar__5441852A" Association="Self.FK__Facturaci__Usuar__5441852A">
+          <AssociationSet Name="FK__Facturaci__Usuar__0D7A0286" Association="Self.FK__Facturaci__Usuar__0D7A0286">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
@@ -274,32 +287,15 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="ProveedoresProductos" EntitySet="ProveedoresProductos" />
           </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__TipoUs__0C85DE4D" Association="Self.FK__Usuarios__TipoUs__0C85DE4D">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GestionCafeteriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cafeteria">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_Campus" Type="Int32" Nullable="false" />
-          <Property Name="Encargado" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Campu" Relationship="Self.FK__Cafeteria__ID_Ca__2F10007B" FromRole="Cafeteria" ToRole="Campus" />
-          <NavigationProperty Name="Empleado" Relationship="GestionCafeteriaModel.FK__Cafeteria__Encar__31EC6D26" FromRole="Cafeteria" ToRole="Empleado" />
-        </EntityType>
-        <EntityType Name="Campu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Cafeterias" Relationship="Self.FK__Cafeteria__ID_Ca__2F10007B" FromRole="Campus" ToRole="Cafeteria" />
-        </EntityType>
         <EntityType Name="Marca">
           <Key>
             <PropertyRef Name="IdMarca" />
@@ -328,34 +324,13 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D" FromRole="Tipo_Usuario" ToRole="Usuario" />
         </EntityType>
-        <Association Name="FK__Cafeteria__ID_Ca__2F10007B">
-          <End Role="Campus" Type="Self.Campu" Multiplicity="1" />
-          <End Role="Cafeteria" Type="Self.Cafeteria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Campus">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Cafeteria">
-              <PropertyRef Name="ID_Campus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="GestionCafeteriaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cafeterias" EntityType="Self.Cafeteria" />
-          <EntitySet Name="Campus" EntityType="Self.Campu" />
           <EntitySet Name="Marcas" EntityType="Self.Marca" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedore" />
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
-          <AssociationSet Name="FK__Cafeteria__ID_Ca__2F10007B" Association="Self.FK__Cafeteria__ID_Ca__2F10007B">
-            <End Role="Campus" EntitySet="Campus" />
-            <End Role="Cafeteria" EntitySet="Cafeterias" />
-          </AssociationSet>
           <EntitySet Name="Empleadoes" EntityType="GestionCafeteriaModel.Empleado" />
-          <AssociationSet Name="FK__Cafeteria__Encar__31EC6D26" Association="GestionCafeteriaModel.FK__Cafeteria__Encar__31EC6D26">
-            <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Cafeteria" EntitySet="Cafeterias" />
-          </AssociationSet>
           <EntitySet Name="Productoes" EntityType="GestionCafeteriaModel.Producto" />
           <EntitySet Name="ProveedoresProductos" EntityType="GestionCafeteriaModel.ProveedoresProducto" />
           <AssociationSet Name="FK__Proveedor__Produ__4222D4EF" Association="GestionCafeteriaModel.FK__Proveedor__Produ__4222D4EF">
@@ -384,10 +359,24 @@
             <End Role="Empleado" EntitySet="Empleadoes" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
           </AssociationSet>
+          <EntitySet Name="Cafeterias" EntityType="GestionCafeteriaModel.Cafeteria" />
+          <AssociationSet Name="FK__Cafeteria__Encar__6FE99F9F" Association="GestionCafeteriaModel.FK__Cafeteria__Encar__6FE99F9F">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Cafeteria" EntitySet="Cafeterias" />
+          </AssociationSet>
+          <EntitySet Name="Campus" EntityType="GestionCafeteriaModel.Campu" />
+          <AssociationSet Name="FK__Cafeteria__ID_Ca__7B5B524B" Association="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__7B5B524B">
+            <End Role="Campu" EntitySet="Campus" />
+            <End Role="Cafeteria" EntitySet="Cafeterias" />
+          </AssociationSet>
           <EntitySet Name="Usuarios" EntityType="GestionCafeteriaModel.Usuario" />
-          <AssociationSet Name="FK__Facturaci__Usuar__5441852A" Association="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A">
+          <AssociationSet Name="FK__Facturaci__Usuar__0D7A0286" Association="GestionCafeteriaModel.FK__Facturaci__Usuar__0D7A0286">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Facturacion_Articulos" EntitySet="Facturacion_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__TipoUs__0C85DE4D" Association="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Empleado">
@@ -398,26 +387,14 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Salario" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <NavigationProperty Name="Cafeterias" Relationship="GestionCafeteriaModel.FK__Cafeteria__Encar__31EC6D26" FromRole="Empleado" ToRole="Cafeteria" />
           <Property Name="Cedula" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Tanda_labor" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Porciento_Comision" Type="Int32" />
           <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Emple__52593CB8" FromRole="Empleado" ToRole="Facturacion_Articulos" />
+          <NavigationProperty Name="Cafeterias" Relationship="GestionCafeteriaModel.FK__Cafeteria__Encar__6FE99F9F" FromRole="Empleado" ToRole="Cafeteria" />
         </EntityType>
-        <Association Name="FK__Cafeteria__Encar__31EC6D26">
-          <End Type="GestionCafeteriaModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="GestionCafeteriaModel.Cafeteria" Role="Cafeteria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="IdEMpleado" />
-            </Principal>
-            <Dependent Role="Cafeteria">
-              <PropertyRef Name="Encargado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="Id" />
@@ -492,7 +469,7 @@
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Articulo" Relationship="GestionCafeteriaModel.FK__Facturaci__Artic__534D60F1" FromRole="Facturacion_Articulos" ToRole="Articulo" />
           <NavigationProperty Name="Empleado" Relationship="GestionCafeteriaModel.FK__Facturaci__Emple__52593CB8" FromRole="Facturacion_Articulos" ToRole="Empleado" />
-          <NavigationProperty Name="Usuario" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" FromRole="Facturacion_Articulos" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__0D7A0286" FromRole="Facturacion_Articulos" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK__Articulos__Marca__4E88ABD4">
           <End Type="GestionCafeteriaModel.Marca" Role="Marca" Multiplicity="1" />
@@ -542,20 +519,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cafeteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Campus" Type="Int32" Nullable="false" />
+          <Property Name="Encargado" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="GestionCafeteriaModel.FK__Cafeteria__Encar__6FE99F9F" FromRole="Cafeteria" ToRole="Empleado" />
+          <NavigationProperty Name="Campu" Relationship="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__7B5B524B" FromRole="Cafeteria" ToRole="Campu" />
+        </EntityType>
+        <Association Name="FK__Cafeteria__Encar__6FE99F9F">
+          <End Type="GestionCafeteriaModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="GestionCafeteriaModel.Cafeteria" Role="Cafeteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="IdEMpleado" />
+            </Principal>
+            <Dependent Role="Cafeteria">
+              <PropertyRef Name="Encargado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Campu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cafeterias" Relationship="GestionCafeteriaModel.FK__Cafeteria__ID_Ca__7B5B524B" FromRole="Campu" ToRole="Cafeteria" />
+        </EntityType>
+        <Association Name="FK__Cafeteria__ID_Ca__7B5B524B">
+          <End Type="GestionCafeteriaModel.Campu" Role="Campu" Multiplicity="1" />
+          <End Type="GestionCafeteriaModel.Cafeteria" Role="Cafeteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cafeteria">
+              <PropertyRef Name="ID_Campus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
           </Key>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cedula" Type="Int32" Nullable="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="LimiteCredito" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TipoUsuario" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__5441852A" FromRole="Usuario" ToRole="Facturacion_Articulos" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="TipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturacion_Articulos" Relationship="GestionCafeteriaModel.FK__Facturaci__Usuar__0D7A0286" FromRole="Usuario" ToRole="Facturacion_Articulos" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="GestionCafeteriaModel.FK__Usuarios__TipoUs__0C85DE4D" FromRole="Usuario" ToRole="Tipo_Usuario" />
         </EntityType>
-        <Association Name="FK__Facturaci__Usuar__5441852A">
+        <Association Name="FK__Facturaci__Usuar__0D7A0286">
           <End Type="GestionCafeteriaModel.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="GestionCafeteriaModel.Facturacion_Articulos" Role="Facturacion_Articulos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -567,32 +591,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Usuarios__TipoUs__0C85DE4D">
+          <End Type="GestionCafeteriaModel.Tipo_Usuario" Role="Tipo_Usuario" Multiplicity="1" />
+          <End Type="GestionCafeteriaModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GestionCafeteriaModelStoreContainer" CdmEntityContainer="GestionCafeteriaEntities">
-          <EntitySetMapping Name="Cafeterias">
-            <EntityTypeMapping TypeName="GestionCafeteriaModel.Cafeteria">
-              <MappingFragment StoreEntitySet="Cafeteria">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="ID_Campus" ColumnName="ID_Campus" />
-                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Campus">
-            <EntityTypeMapping TypeName="GestionCafeteriaModel.Campu">
-              <MappingFragment StoreEntitySet="Campus">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Marcas">
             <EntityTypeMapping TypeName="GestionCafeteriaModel.Marca">
               <MappingFragment StoreEntitySet="Marcas">
@@ -684,9 +700,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cafeterias">
+            <EntityTypeMapping TypeName="GestionCafeteriaModel.Cafeteria">
+              <MappingFragment StoreEntitySet="Cafeteria">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="ID_Campus" ColumnName="ID_Campus" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campus">
+            <EntityTypeMapping TypeName="GestionCafeteriaModel.Campu">
+              <MappingFragment StoreEntitySet="Campus">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="GestionCafeteriaModel.Usuario">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />

@@ -31,7 +31,6 @@
             this.CmdEliminar = new System.Windows.Forms.Button();
             this.CmdGuadar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TxtLimiteCredito = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.CbxTipoUsuario = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtIdUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.lblClave = new System.Windows.Forms.Label();
+            this.TxtLimiteCredito = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtLimiteCredito)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdEliminar
@@ -73,6 +76,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.TxtLimiteCredito);
+            this.panel1.Controls.Add(this.lblClave);
+            this.panel1.Controls.Add(this.txtClave);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.CbxTipoUsuario);
             this.panel1.Controls.Add(this.label6);
@@ -92,14 +97,6 @@
             this.panel1.Size = new System.Drawing.Size(489, 426);
             this.panel1.TabIndex = 3;
             // 
-            // TxtLimiteCredito
-            // 
-            this.TxtLimiteCredito.Location = new System.Drawing.Point(141, 254);
-            this.TxtLimiteCredito.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtLimiteCredito.Name = "TxtLimiteCredito";
-            this.TxtLimiteCredito.Size = new System.Drawing.Size(240, 22);
-            this.TxtLimiteCredito.TabIndex = 15;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -114,7 +111,7 @@
             // 
             this.CbxTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxTipoUsuario.FormattingEnabled = true;
-            this.CbxTipoUsuario.Location = new System.Drawing.Point(141, 187);
+            this.CbxTipoUsuario.Location = new System.Drawing.Point(141, 202);
             this.CbxTipoUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.CbxTipoUsuario.Name = "CbxTipoUsuario";
             this.CbxTipoUsuario.Size = new System.Drawing.Size(240, 24);
@@ -123,7 +120,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 191);
+            this.label6.Location = new System.Drawing.Point(5, 209);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 17);
@@ -174,7 +171,7 @@
             // 
             // TxtCedula
             // 
-            this.TxtCedula.Location = new System.Drawing.Point(141, 126);
+            this.TxtCedula.Location = new System.Drawing.Point(141, 154);
             this.TxtCedula.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCedula.Name = "TxtCedula";
             this.TxtCedula.Size = new System.Drawing.Size(240, 22);
@@ -183,7 +180,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 129);
+            this.label3.Location = new System.Drawing.Point(8, 154);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
@@ -192,7 +189,7 @@
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(141, 71);
+            this.TxtNombre.Location = new System.Drawing.Point(141, 60);
             this.TxtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(240, 22);
@@ -201,7 +198,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 75);
+            this.label2.Location = new System.Drawing.Point(4, 60);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 17);
@@ -227,6 +224,30 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Identificador";
             // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(141, 104);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
+            this.txtClave.Size = new System.Drawing.Size(240, 22);
+            this.txtClave.TabIndex = 16;
+            // 
+            // lblClave
+            // 
+            this.lblClave.AutoSize = true;
+            this.lblClave.Location = new System.Drawing.Point(8, 109);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(43, 17);
+            this.lblClave.TabIndex = 17;
+            this.lblClave.Text = "Clave";
+            // 
+            // TxtLimiteCredito
+            // 
+            this.TxtLimiteCredito.Location = new System.Drawing.Point(141, 257);
+            this.TxtLimiteCredito.Name = "TxtLimiteCredito";
+            this.TxtLimiteCredito.Size = new System.Drawing.Size(240, 22);
+            this.TxtLimiteCredito.TabIndex = 18;
+            // 
             // FrmUsuariosEd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,6 +262,7 @@
             this.Load += new System.EventHandler(this.FrmUsuariosEd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtLimiteCredito)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,7 +284,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CbxTipoUsuario;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TxtLimiteCredito;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblClave;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.NumericUpDown TxtLimiteCredito;
     }
 }

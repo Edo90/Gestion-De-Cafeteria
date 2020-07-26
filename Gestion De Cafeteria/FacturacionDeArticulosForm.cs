@@ -45,14 +45,14 @@ namespace Gestion_De_Cafeteria
                             facturas.Usuario.Nombre.StartsWith(searchItem))
                          select new
                          {
-                             facturas.Id,
-                             facturas.Articulo.Descripcion,
-                             facturas.Comentario,
-                             facturas.Estado,
-                             facturas.Fecha_Venta,
-                             facturas.Monto_De_Articulo,
-                             facturas.Unidades_Vendidas,
-                             facturas.Usuario.Nombre
+                             Id = facturas.Id,
+                             Descripcion = facturas.Articulo.Descripcion,
+                             Comentario = facturas.Comentario,
+                             Estado = facturas.Estado,
+                             Fecha = facturas.Fecha_Venta,
+                             Monto = facturas.Monto_De_Articulo,
+                             Unidades = facturas.Unidades_Vendidas,
+                             Usuario = facturas.Usuario.Nombre
                          };
 
             DgvFacturacion.DataSource = result.ToList();

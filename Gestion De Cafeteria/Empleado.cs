@@ -17,8 +17,8 @@ namespace Gestion_De_Cafeteria
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
-            this.Cafeterias = new HashSet<Cafeteria>();
             this.Facturacion_Articulos = new HashSet<Facturacion_Articulos>();
+            this.Cafeterias = new HashSet<Cafeteria>();
         }
     
         public int IdEMpleado { get; set; }
@@ -32,8 +32,8 @@ namespace Gestion_De_Cafeteria
         public bool Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cafeteria> Cafeterias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cafeteria> Cafeterias { get; set; }
     }
 }
