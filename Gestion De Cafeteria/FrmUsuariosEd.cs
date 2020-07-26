@@ -67,19 +67,28 @@ namespace Gestion_De_Cafeteria
                 }
                 else
                 {
-                    entities.Usuarios.Add(new Usuario
+                    if (!vc.validaCedula(TxtCedula.Text))
                     {
-                        Nombre = TxtNombre.Text,
-                        Cedula = int.Parse(TxtCedula.Text),
-                        TipoUsuario = CbxTipoUsuario.Text,
-                        LimiteCredito = decimal.Parse(TxtLimiteCredito.Text),
-                        FechaRegistro = DtpFechaRegistro.Value,
-                        Estado = CbxEstado.Text
-                    });
-                    entities.SaveChanges();
+                        MessageBox.Show("Cedula incorrecta");
+                    }
+                    else
+                    {
+                        entities.Usuarios.Add(new Usuario
+                        {
+                            Nombre = TxtNombre.Text,
+                            Cedula = int.Parse(TxtCedula.Text),
+                            TipoUsuario = CbxTipoUsuario.Text,
+                            LimiteCredito = decimal.Parse(TxtLimiteCredito.Text),
+                            FechaRegistro = DtpFechaRegistro.Value,
+                            Estado = CbxEstado.Text
+                        });
+
+                        entities.SaveChanges();
+                        MessageBox.Show("Datos guardados con exito");
+                        this.Close();
+                    }
                 }
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                
             }
             catch (Exception ex)
             {

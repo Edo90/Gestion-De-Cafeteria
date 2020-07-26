@@ -74,12 +74,13 @@ namespace Gestion_De_Cafeteria
                     Estado = estadoComboBox.SelectedItem.ToString() == "Activo",
                     Porciento_Comision = int.Parse(comisionTB.Value.ToString())
                 };
-            }
-            if (empleado != null)
-                entities.Empleadoes.AddOrUpdate(empleado);
+                if (empleado != null)
+                    entities.Empleadoes.AddOrUpdate(empleado);
 
-            entities.SaveChanges();
-            this.Dispose();
+                entities.SaveChanges();
+                this.Dispose();
+            }
+            
         }
 
         private bool FieldsAreValid()
