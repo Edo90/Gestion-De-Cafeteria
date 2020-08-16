@@ -39,11 +39,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -172,6 +177,12 @@
     <Compile Include="FrmProveedoresEd.Designer.cs">
       <DependentUpon>FrmProveedoresEd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteVentas.Designer.cs">
+      <DependentUpon>FrmReporteVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +235,7 @@
     <Compile Include="ProveedoresProducto.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Tipo_Usuario.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
@@ -281,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedoresEd.resx">
       <DependentUpon>FrmProveedoresEd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteVentas.resx">
+      <DependentUpon>FrmReporteVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoUsuario.resx">
       <DependentUpon>FrmTipoUsuario.cs</DependentUpon>
@@ -349,6 +364,19 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GestionCafeteriaEntity.edmx</DependentUpon>
       <LastGenOutput>GestionCafeteriaEntity.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
