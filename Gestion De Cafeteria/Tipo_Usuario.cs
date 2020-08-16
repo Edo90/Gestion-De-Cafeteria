@@ -14,8 +14,17 @@ namespace Gestion_De_Cafeteria
     
     public partial class Tipo_Usuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tipo_Usuario()
+        {
+            this.Usuarios = new HashSet<Usuario>();
+        }
+    
         public int ID { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

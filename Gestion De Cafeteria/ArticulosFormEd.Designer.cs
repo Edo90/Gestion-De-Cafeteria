@@ -83,6 +83,7 @@
             // 
             // marcaCb
             // 
+            this.marcaCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.marcaCb.FormattingEnabled = true;
             this.marcaCb.Location = new System.Drawing.Point(205, 217);
             this.marcaCb.Name = "marcaCb";
@@ -125,6 +126,7 @@
             // 
             // proveedorCb
             // 
+            this.proveedorCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.proveedorCb.FormattingEnabled = true;
             this.proveedorCb.Location = new System.Drawing.Point(205, 337);
             this.proveedorCb.Name = "proveedorCb";
@@ -142,6 +144,7 @@
             // 
             // estadoCb
             // 
+            this.estadoCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoCb.FormattingEnabled = true;
             this.estadoCb.Items.AddRange(new object[] {
             "Activo",
@@ -162,6 +165,7 @@
             // 
             // existenciaCb
             // 
+            this.existenciaCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.existenciaCb.FormattingEnabled = true;
             this.existenciaCb.Items.AddRange(new object[] {
             "Existente",

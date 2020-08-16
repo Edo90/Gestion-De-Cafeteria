@@ -22,13 +22,15 @@ namespace Gestion_De_Cafeteria
     
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
-        public int Cedula { get; set; }
+        public string Cedula { get; set; }
         public Nullable<decimal> LimiteCredito { get; set; }
         public System.DateTime FechaRegistro { get; set; }
-        public string Estado { get; set; }
-        public string TipoUsuario { get; set; }
+        public bool Estado { get; set; }
+        public int TipoUsuario { get; set; }
+        public string Clave { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion_Articulos> Facturacion_Articulos { get; set; }
+        public virtual Tipo_Usuario Tipo_Usuario { get; set; }
     }
 }

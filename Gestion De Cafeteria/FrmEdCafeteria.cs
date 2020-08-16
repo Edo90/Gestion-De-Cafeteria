@@ -30,13 +30,13 @@ namespace Gestion_De_Cafeteria
                 txtDescripcion.Text = cafeteria.Descripcion;
                 CmbCampus.SelectedValue = cafeteria.ID_Campus;
                 CmbEncargado.SelectedValue = cafeteria.Encargado;
-                CmbEstado.SelectedIndex = Int32.Parse(cafeteria.Estado);
+                CmbEstado.SelectedIndex = cafeteria.Estado ? 0 : 1;
             }
 
         }
-        public void llenarCombox()
+        public void LlenarCombox()
         {
-            var campus = entities.Campus.Where(x =>x.Estado == "1").ToList();
+            var campus = entities.Campus.Where(x =>x.Estado == true).ToList();
             if (campus.Count > 0)
             {
                 CmbCampus.DataSource = campus;
@@ -62,7 +62,7 @@ namespace Gestion_De_Cafeteria
                 Descripcion = txtDescripcion.Text,
                 ID_Campus = int.Parse(CmbCampus.SelectedValue.ToString()),
                 Encargado = int.Parse(CmbEncargado.SelectedValue.ToString()),
-                Estado = CmbEstado.SelectedText.ToString() == "Activo" ? "1" : "0"
+                Estado = CmbEstado.SelectedItem.ToString() == "Activo"
             };
 
             entities.Cafeterias.AddOrUpdate(cafeteria);

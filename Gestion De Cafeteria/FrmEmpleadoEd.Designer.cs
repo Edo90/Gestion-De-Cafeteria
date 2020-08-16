@@ -83,6 +83,7 @@
             "Mañana",
             "Tarde",
             "Noche"});
+            this.tandaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tandaComboBox.Items.AddRange(new object[] {
             "Mañana",
             "Tarde",
@@ -94,6 +95,7 @@
             // 
             // estadoComboBox
             // 
+            this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoComboBox.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});

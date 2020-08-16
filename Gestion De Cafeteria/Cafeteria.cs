@@ -18,9 +18,9 @@ namespace Gestion_De_Cafeteria
         public string Descripcion { get; set; }
         public int ID_Campus { get; set; }
         public int Encargado { get; set; }
-        public string Estado { get; set; }
+        public bool Estado { get; set; }
     
-        public virtual Campu Campu { get; set; }
         public virtual Empleado Empleado { get; set; }
+        public virtual Campu Campu { get; set; }
     }
 }
