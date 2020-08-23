@@ -36,7 +36,7 @@ namespace Gestion_De_Cafeteria
             {
                 MessageBox.Show("Bienvenido " + txtUsuario.Text);
                 Form1 menu = new Form1();
-    menu.ShowDialog();
+                menu.ShowDialog();
             }
         }
         public string getMD5Hash(string input)
