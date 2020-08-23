@@ -75,7 +75,11 @@ namespace Gestion_De_Cafeteria
                 }
                 else
                 {
-                    entities.Usuarios.Add(new Usuario
+                    if (!vc.validaCedula(TxtCedula.Text))
+                    {
+                        MessageBox.Show("Cedula incorrecta");
+                    }
+                    else
                     {
                         Nombre = TxtNombre.Text,
                         Cedula = TxtCedula.Text,
@@ -87,8 +91,7 @@ namespace Gestion_De_Cafeteria
                     });
                     entities.SaveChanges();
                 }
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                
             }
             catch (Exception ex)
             {

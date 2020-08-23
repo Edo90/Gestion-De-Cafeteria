@@ -59,21 +59,30 @@ namespace Gestion_De_Cafeteria
                         entities.SaveChanges();
                         entities.Entry<Proveedore>(proveedor).Reload();
                     }
-                    
+
                 }
                 else
                 {
-                    entities.Proveedores.Add(new Proveedore
+                    if (!vc.esUnRNCValido(TxtRNC.Text))
                     {
-                        NombreComercial = TxtNombreComercial.Text,
-                        RNC = TxtRNC.Text,
-                        FechaRegistro = DtpFechaRegistro.Value,
-                        Estado = CbxEstado.Text
-                    });
-                    entities.SaveChanges();
+                        MessageBox.Show("RNC incorrecto");
+                    }
+                    else
+                    {
+                        entities.Proveedores.Add(new Proveedore
+                        {
+                            NombreComercial = TxtNombreComercial.Text,
+                            RNC = TxtRNC.Text,
+                            FechaRegistro = DtpFechaRegistro.Value,
+                            Estado = CbxEstado.Text
+                        });
+
+                        entities.SaveChanges();
+                        MessageBox.Show("Datos guardados con exito");
+                        this.Close();
+                    }
                 }
-                MessageBox.Show("Datos guardados con exito");
-                this.Close();
+                
             }
             catch (Exception ex)
             {
