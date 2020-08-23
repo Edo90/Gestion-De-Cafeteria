@@ -54,6 +54,11 @@ namespace Gestion_De_Cafeteria
             }
             return sb.ToString();
         }
-            }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
     }
 
