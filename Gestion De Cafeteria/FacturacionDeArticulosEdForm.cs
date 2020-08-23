@@ -13,8 +13,9 @@ namespace Gestion_De_Cafeteria
 {
     public partial class FacturacionDeArticulosEdForm : Form
     {
-        GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
-        private Facturacion_Articulos factura;
+        private const int UNIDAD_MAXIMA_DE_ARTICULO = 10;
+        readonly GestionCafeteriaEntities entities = new GestionCafeteriaEntities();
+        private readonly Facturacion_Articulos factura;
 
         public FacturacionDeArticulosEdForm()
         {
@@ -34,23 +35,32 @@ namespace Gestion_De_Cafeteria
 
         private void guardarBtn_Click(object sender, EventArgs e)
         {
-            Facturacion_Articulos fact = new Facturacion_Articulos();
-
-            fact.Id = string.IsNullOrEmpty(idTb.Text) ? 0 : int.Parse(idTb.Text);
-            fact.ArticuloId = entities.Articulos.Where(x => x.Descripcion == articuloCb.SelectedItem.ToString())
+            Facturacion_Articulos fact = new Facturacion_Articulos
+            {
+                Id = string.IsNullOrEmpty(idTb.Text) ? 0 : int.Parse(idTb.Text),
+                ArticuloId = entities.Articulos.Where(x => x.Descripcion == articuloCb.SelectedItem.ToString())
                                                 .Select(x => x.Id)
-                                                .FirstOrDefault();
-            fact.Comentario = comentarioTb.Text;
-            fact.EmpleadoId = entities.Empleadoes.Where(x => x.Nombre == empleadoCb.SelectedItem.ToString())
+                                                .FirstOrDefault(),
+                Comentario = comentarioTb.Text,
+                EmpleadoId = entities.Empleadoes.Where(x => x.Nombre == empleadoCb.SelectedItem.ToString())
                                                  .Select(x => x.IdEMpleado)
-                                                 .FirstOrDefault();
-            fact.Estado = estadoCheckBox.Checked;
-            fact.Fecha_Venta = DateTime.Now;
-            fact.Monto_De_Articulo = decimal.Parse(montoTb.Text);
-            fact.Unidades_Vendidas = int.Parse(unidadesVendidasTb.Text);
-            fact.UsuarioId = entities.Usuarios.Where(x => x.Nombre == usuarioCb.SelectedItem.ToString())
+                                                 .FirstOrDefault(),
+                Estado = estadoCheckBox.Checked,
+                Fecha_Venta = DateTime.Now,
+                Monto_De_Articulo = decimal.Parse(montoTb.Text),
+                Unidades_Vendidas = int.Parse(unidadesVendidasTb.Text),
+                UsuarioId = entities.Usuarios.Where(x => x.Nombre == usuarioCb.SelectedItem.ToString())
                                                  .Select(x => x.IdUsuario)
-                                                 .FirstOrDefault();
+                                                 .FirstOrDefault()
+            };
+
+            var ventas = int.Parse(unidadesVendidasTb.Text);
+            if (ventas > UNIDAD_MAXIMA_DE_ARTICULO)
+            {
+                var articulo = entities.Articulos.Where(x => x.Descripcion == articuloCb.SelectedItem.ToString()).FirstOrDefault();
+                articulo.Existencia = false;
+                entities.Articulos.AddOrUpdate(articulo);
+            }
 
             entities.Facturacion_Articulos.AddOrUpdate(fact);
             entities.SaveChanges();
@@ -60,9 +70,15 @@ namespace Gestion_De_Cafeteria
 
         private void FacturacionDeArticulosEdForm_Load(object sender, EventArgs e)
         {
-            var usuarios = entities.Usuarios.Select(x => x.Nombre).ToArray();
-            var empleados = entities.Empleadoes.Select(x => x.Nombre).ToArray();
-            var Articulos = entities.Articulos.Select(x => x.Descripcion).ToArray();
+            var usuarios = entities.Usuarios.Where(x => x.Estado)
+                                            .Select(x => x.Nombre)
+                                            .ToArray();
+            var empleados = entities.Empleadoes.Where(x => x.Estado)
+                                                .Select(x => x.Nombre)
+                                                .ToArray();
+            var Articulos = entities.Articulos.Where(x => x.Existencia)
+                                              .Select(x => x.Descripcion)
+                                              .ToArray();
             usuarioCb.Items.AddRange(usuarios);
             empleadoCb.Items.AddRange(empleados);
             articuloCb.Items.AddRange(Articulos);

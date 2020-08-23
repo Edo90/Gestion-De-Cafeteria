@@ -224,6 +224,12 @@
     <Compile Include="ProveedoresProducto.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReporteVentaPorUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteVentaPorUsuario.Designer.cs">
+      <DependentUpon>ReporteVentaPorUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tipo_Usuario.cs">
       <DependentUpon>GestionCafeteriaEntity.tt</DependentUpon>
     </Compile>
@@ -301,6 +307,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteVentaPorUsuario.resx">
+      <DependentUpon>ReporteVentaPorUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="GestionCafeteriaEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GestionCafeteriaEntity.Designer.cs</LastGenOutput>

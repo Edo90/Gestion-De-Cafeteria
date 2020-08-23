@@ -84,5 +84,12 @@ namespace Gestion_De_Cafeteria
             frmFacturacion.Show();
             teamGroupBox.Visible = false;
         }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var reporteVentPorUsuario = new ReporteVentaPorUsuario();
+            reporteVentPorUsuario.Show();
+            teamGroupBox.Visible = false;
+        }
     }
 }
